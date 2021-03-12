@@ -15,7 +15,7 @@ class CreateGamesTable extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('movimientos')->nullable(true);
+            $table->text('moves')->nullable(true);
             $table->timestamp('start')->useCurrent();
             $table->timestamp('end')->nullable(true);
             $table->timestamps();
