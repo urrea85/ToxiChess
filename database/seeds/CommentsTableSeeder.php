@@ -12,7 +12,7 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        $comment = new Comment(['content'=>'Move e7! its check!']);
+        $comment = new Comment(['content'=>'Move e7! its check!','color'=>false]);
         $comment->save();
     }
 }
