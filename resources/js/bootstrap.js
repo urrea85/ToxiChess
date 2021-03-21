@@ -1,3 +1,7 @@
+window.Chess = require("chess.js")
+
+
+
 window._ = require('lodash');
 
 /**
