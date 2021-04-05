@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::get('/chess', function () {
     return view('chess');
 });
+
+Route::get('/chat', 'ChatController@index');
+
+Route::post('/sendMessage', 'ChatController@sendMessage');
+Route::post('sendMessage', 'ChatController@sendMessage');
