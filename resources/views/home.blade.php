@@ -1,6 +1,6 @@
 @extends('masterPage')
 
-@section('title', 'BOBO')
+@section('title', 'HOME')
 
 @section('sidebar')
     @parent

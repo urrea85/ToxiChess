@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>App Name - @yield('title')</title>
+        <title>@yield('title')</title>
     </head>
     <body>
         @section('sidebar')
@@ -36,10 +36,7 @@
                 <button type="button" class="redes" style="background:orchid"> <i class="bi bi-instagram"></i></button>
         </div>
     </footer>
-</html>
-
-
-<!-- MODO EMPLEO YIELD
+    {{-- MODO EMPLEO YIELD
     @extends('masterPage')
 
     @section('title', 'BOBO')
@@ -52,4 +49,5 @@
 
     @section('content')
 
-    @endsection -->
+    @endsection --}}
+</html>
