@@ -22,3 +22,7 @@ Route::get('/home', function () {
 Route::get('/chess', function () {
     return view('chess');
 });
+
+Route::get('/masterpage', function () {
+    return view('masterPage');
+});
