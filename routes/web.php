@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/chess', function () {
     return view('chess');
 });
+
