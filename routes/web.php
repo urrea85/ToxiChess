@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::get('/chess', function () {
     return view('chess');
 });
+
+Route::get('/masterpage', function () {
+    return view('masterPage');
+});
+
+Route::get('/prueba', function () {
+    return view('prueba');
+});
