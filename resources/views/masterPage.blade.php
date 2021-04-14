@@ -36,10 +36,7 @@
                 <button type="button" class="redes" style="background:orchid"> <i class="bi bi-instagram"></i></button>
         </div>
     </footer>
-</html>
-
-
-<!-- MODO EMPLEO YIELD
+    {{-- MODO EMPLEO YIELD
     @extends('masterPage')
 
     @section('title', 'BOBO')
@@ -52,4 +49,5 @@
 
     @section('content')
 
-    @endsection -->
+    @endsection --}}
+</html>
