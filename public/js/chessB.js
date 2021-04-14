@@ -79,4 +79,5 @@ var config = {
   onMouseoverSquare: onMouseoverSquare,
   onSnapEnd: onSnapEnd
 }
-board = Chessboard('myBoard', config)
+board = Chessboard('myBoard', config);
+$(window).resize(board.resize);
