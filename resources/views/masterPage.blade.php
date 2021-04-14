@@ -19,7 +19,7 @@
             <button type="button" class="horizontal-menu-2">Perfil</button>
             <button type="button" class="horizontal-menu-2">Panel Administrador</button>
             <button type="button" class="icon" > <i class="bi bi-person-circle" ></i></button>
-            <button type="button" class="iconOff"> <i class="bi bi-power"></i></button>
+            <button type="button" class="iconOff" onclick="window.location='{{url('/register')}}'"> <i class="bi bi-power"></i></button>
         </div>
 
         @show
