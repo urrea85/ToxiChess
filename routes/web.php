@@ -26,7 +26,3 @@ Route::get('/chess', function () {
 Route::get('/masterpage', function () {
     return view('masterPage');
 });
-
-Route::get('/prueba', function () {
-    return view('prueba');
-});

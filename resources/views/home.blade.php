@@ -1,3 +1,14 @@
+@extends('masterPage')
+
+@section('title', 'BOBO')
+
+@section('sidebar')
+    @parent
+
+    <p>This is appended to the master sidebar.</p>
+@endsection
+
+@section('content')
 <!DOCTYPE html>
 <html style="height: 100%;" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -49,7 +60,7 @@
                     <input type="submit" value="Submit" />
                 </form>
             </div>
-            <div style="background-color: green; flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center">
+            <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center">
                 <div id="myBoard" style="width:85%"></div>
             </div>
             <div class="chat-container">
@@ -70,3 +81,4 @@
     </body>
     <script src="js/chessB.js"></script>
 </html>
+@endsection
