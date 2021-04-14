@@ -23,6 +23,11 @@ Route::get('/chess', function () {
     return view('chess');
 });
 
+Route::get('/masterpage', function () {
+    return view('masterPage');
+});
+
+
 Route::get('/chat', 'ChatController@index');
 
 Route::post('/sendMessage', 'ChatController@sendMessage');
