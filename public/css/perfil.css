@@ -1,0 +1,33 @@
+
+.form{
+    align-content: center;
+    justify-content: center;
+    display:flex;
+    height:100%
+}
+
+form{
+    background-color: #baadd9; 
+    padding: 30px 60px; 
+    border: solid 2px black; 
+    border-radius: 10px;
+}
+
+.rectangle-7 {
+	padding: 8px 8px 8px 8px;
+	background: #9999ff;
+	border-color: #84778f;
+	border-width: 1px;
+	border-style: solid;
+	border-radius: 3px 3px 3px 3px;
+    width: 180px;
+    text-align: center;
+    display: inline-block;
+}
+
+input{
+    color: darkgrey;
+}
+input:focus{
+    color: black;
+}

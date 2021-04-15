@@ -3,8 +3,11 @@ body {
     background: linear-gradient(170deg, rgba(49, 57, 73, 0.8) 20%, rgba(49, 57, 73, 0.5) 20%, rgba(49, 57, 73, 0.5) 35%, rgba(41, 48, 61, 0.6) 35%, rgba(41, 48, 61, 0.8) 45%, rgba(31, 36, 46, 0.5) 45%, rgba(31, 36, 46, 0.8) 75%, rgba(49, 57, 73, 0.5) 75%), linear-gradient(45deg, rgba(20, 24, 31, 0.8) 0%, rgba(41, 48, 61, 0.8) 50%, rgba(82, 95, 122, 0.8) 50%, rgba(133, 146, 173, 0.8) 100%) #313949;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
     color: black;
+<<<<<<< HEAD
     margin:0px;
     height:100%
+=======
+>>>>>>> main
 }
 
 :root{
@@ -34,6 +37,7 @@ body {
         background-color: #604c8a;
         box-shadow: 0 0 10px 0 mediumpurple inset, 0 0 10px 4px mediumpurple;
 }
+
 
 
 .iconOff{
@@ -98,7 +102,6 @@ html{
     border-right: 2px solid var(--mainColor);   
     border-bottom: 2px solid #6C3783;
     border-left: 0;
-
 }
 
 .logo:before {
