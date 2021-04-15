@@ -1,8 +1,9 @@
 
 .form{
+    align-content: center;
     justify-content: center;
     display:flex;
-    flex-wrap: wrap;
+    height:100%
 }
 
 form{

@@ -8,7 +8,6 @@
 @endsection
 
 @section('content')
-<br><br><br><br><br><br><br><br><br>
 <link rel="stylesheet" href="css/perfil.css">
 <div class="form">
     <form>
