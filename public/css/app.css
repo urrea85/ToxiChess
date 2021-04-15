@@ -148,6 +148,14 @@ html{
     100% { background-position: 0 0; }
 }
 
+.flex-centerbox{
+    display:flex;
+    height: 100%;
+    margin:0px;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 
 /*-------------------HOME PAGE-----------------*/
