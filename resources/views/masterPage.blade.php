@@ -9,16 +9,27 @@
         @section('sidebar')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="css/app.css">
-        
+        <script type="application/javascript">
+
+        function showPasswd()
+        {
+            var x = document.getElementById("Password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        </script>
 
         <div  style="display:flex; position:fixed; top:0; right:0; left:0;" class="btn-group btn-group-justified">
-            <button style="vertical-align: middle;" type="button" class="logo"><img src="img/logoRecortado.png"></button>
+            <button style="vertical-align: middle;" type="button" class="logo" onclick="window.location='{{url('/home')}}'"><img src="img/logoRecortado.png"></button>
             <button type="button" class="horizontal-menu-2">Ranking</button>
             <button type="button" class="horizontal-menu-2">Historial</button>
-            <button type="button" class="horizontal-menu-2">Jugar</button>
-            <button type="button" class="horizontal-menu-2">Perfil</button>
+            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/home')}}'">Jugar</button>
+            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/perfil')}}'">Perfil</button>
             <button type="button" class="horizontal-menu-2">Panel Administrador</button>
-            <button type="button" class="icon" > <i class="bi bi-person-circle" ></i></button>
+            <button type="button" class="icon" onclick="window.location='{{url('/perfil')}}'"> <i class="bi bi-person-circle" ></i></button>
             <button type="button" class="iconOff"> <i class="bi bi-power"></i></button>
         </div>
 
