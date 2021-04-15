@@ -16,14 +16,16 @@ class NewMessage implements ShouldBroadcast
 
 
     public $message;
+    public $side;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct($message,$side)
     {
         $this->message = $message;
+        $this->side = $side;
     }
 
     /**
@@ -33,6 +35,6 @@ class NewMessage implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('chat');
+        return new Channel('chat-' . $this->side);
     }
 }

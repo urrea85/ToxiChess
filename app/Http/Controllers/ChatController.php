@@ -15,6 +15,6 @@ class ChatController extends Controller
 
     public function sendMessage(Request $request){
         Log::debug("Message Received: $request->message");
-        broadcast(new NewMessage($request->message));
+        broadcast(new NewMessage($request->message,$request->side));
     }
 }
