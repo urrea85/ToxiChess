@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <base href="/public">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -29,7 +30,7 @@
             <button type="button" class="horizontal-menu-2">Historial</button>
             <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/home')}}'">Jugar</button>
             <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/perfil')}}'">Perfil</button>
-            <button type="button" class="horizontal-menu-2">Panel Administrador</button>
+            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/panelAdmin')}}'">Panel Administrador</button>
             <button type="button" class="icon" onclick="window.location='{{url('/perfil')}}'"> <i class="bi bi-person-circle" ></i></button>
             <button type="button" class="iconOff"> <i class="bi bi-power"></i></button>
         </div>
