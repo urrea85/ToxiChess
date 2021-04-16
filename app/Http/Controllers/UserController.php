@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -13,32 +14,25 @@ class UserController extends Controller
     }
 
     public function show(Request $request, $attribute, $value){
-        $users ="";
+        $users=[];
         switch($attribute){
             case "id":
-                $users = DB::table('users')
-                ->where('id', '=', $value)
-                ->get();
+                $user = User::find($value);
+                if($user != null){
+                    $users = [$user];
+                }
                 break;
             case "name":
-                $users = DB::table('users')
-                ->where('name', '=', $value)
-                ->get();
+                $users = User::where('name', 'like', $value.'%')->paginate();
                 break;
             case "nick":
-                $users = DB::table('users')
-                ->where('nickname', '=', $value)
-                ->get();
+                $users = User::where('nickname', 'like', $value.'%')->paginate();
                 break;
             case "email":
-                $users = DB::table('users')
-                ->where('email', '=', $value)
-                ->get();
+                $users = User::where('email', 'like', $value.'%')->paginate();
                 break;
             case "games":
-                $users = DB::table('users')
-                ->where('total_games', '=', $value)
-                ->get();
+                $users = User::where('total_games', $value)->paginate();
                 break;
             case "all":
                 $users = User::paginate();
