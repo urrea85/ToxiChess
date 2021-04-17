@@ -19,8 +19,9 @@ crossorigin="anonymous"></script>
             <input type="submit"  value="Submit" />
         </form>
     </div>
-    <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center">
-        <div id="myBoard" style="width:85%"></div>
+    <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center; flex-direction: column">
+        <div id="myBoard" style="width:80%"></div>
+        <div id="timer">00 S</div>
     </div>
     <div id="chat-container-b" class="chat-container">
         <ul id="messages-b" class="messages">

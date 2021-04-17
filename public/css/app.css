@@ -184,3 +184,12 @@ html{
 .messages { list-style-type: none; margin: 0; padding: 0; flex:1; overflow-y: scroll; background-color: var(--chatColor3); border-radius:10px 0px 0px 0px; z-index:0}
 .messages > li { padding: 0.5rem 1rem; background-color: var(--chatColor1);}
 .messages > li:nth-child(odd) { background: var(--chatColor2); }
+
+#timer {
+    background: var(--chatColor1);
+    padding: 5px 30px;
+    margin-top: 10px;
+    border: black 3px solid;
+    border-radius: 10px;
+    font-size:50px;
+}

@@ -31,7 +31,6 @@ Route::get('/masterpage', function () {
 Route::get('/chat', 'ChatController@index');
 
 Route::post('/sendMessage', 'ChatController@sendMessage');
-Route::post('sendMessage', 'ChatController@sendMessage');
 Route::get('/perfil', function () {
     return view('perfil');
 });
