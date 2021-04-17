@@ -49,5 +49,14 @@ class UsersTableSeeder extends Seeder
             'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
             'nickname'=>'theraulitoOMG']);
         $user->save();
+
+        for($i = 0; $i<100; $i++){
+            $user = new User([
+                'name'=>"raul$i",
+                'email'=>"raul$i@gmail.com",
+                'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
+                'nickname'=>"theraulitoOMG$i"]);
+            $user->save();
+        }
     }
 }
