@@ -39,5 +39,7 @@ class CommentController extends Controller
         Comment::where('id', $id)->update(array(
             'content'=>$content,
         ));
+
+        return redirect('/panelAdmin/comments/id/'.$id);
     }
 }

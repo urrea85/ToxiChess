@@ -53,4 +53,4 @@ Route::get('/panelAdmin/comments/{attribute}/{value}', 'CommentController@show')
 Route::get('/panelAdmin/comments/all',  function () {
     return redirect('/panelAdmin/comments/all/0');
 });
-Route::put('/panelAdmin/comments/{id}/{content}', 'CommentController@update');
+Route::get('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');

@@ -1,6 +1,27 @@
 @extends('panelAdmin')
 
 @section('panel')
+
+<script>
+       function actualizarComentarios()
+        {
+            var input = document.getElementById("idMessage").value;
+            var select = document.getElementById("content").value;
+            if (input == "" && select != ""){
+                alert("Debes llenar el campo")
+                return false;
+            }else {
+                if((input=="id") && !Number.isInteger(parseInt(input))){
+                    alert("Introduzca un número")
+                    return false;
+                }
+                    window.location="/panelAdmin/comments/update/"+input +"/" + select;
+
+            }
+        }
+</script>
+
+<link rel="stylesheet" href="css/perfil.css">
 <div class="div">
     <select id="mySelect">
                 <option value="id">Id</option>
@@ -31,5 +52,15 @@
         <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
             <?php echo $comments->render() ;?>
         </div>
+        <div style="padding: 10px 0px">
+            <label class="rectangle-7">ID</label>  <input  class="" type="number" id="idMessage" name="id" /> 
+        </div style="padding: 10px 0px">
+        <div style="padding: 10px 0px">
+            <label class="rectangle-7">New Message</label>  <input  class="" type="text" id="content" name="id2" /> 
+        </div style="padding: 10px 0px">
+        <div style="padding: 10px 0px">
+            <button type="button" class="icon" style=" font-size: 21px" onclick="actualizarComentarios()"> Actualizar</i></button>  
+        </div style="padding: 10px 0px">
+  
         @endisset
 @endsection
