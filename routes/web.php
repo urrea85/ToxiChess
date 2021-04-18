@@ -11,8 +11,9 @@
 |
 */
 
+//HOMEPAGE
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('home');
 });
 
 Route::get('/home', function () {
@@ -30,3 +31,21 @@ Route::get('/masterpage', function () {
 Route::get('/register', function () {
     return view('register');
 });
+//CHAT
+Route::get('/chat', 'ChatController@index');
+
+Route::post('/sendMessage', 'ChatController@sendMessage');
+Route::post('sendMessage', 'ChatController@sendMessage');
+
+//PROFILE
+Route::get('/perfil', function () {
+    return view('perfil');
+});
+
+//PANEL ADMINISTRATOR
+Route::get('/panelAdmin', 'UserController@index');
+Route::get('/panelAdmin/{attribute}/{value}', 'UserController@show');
+Route::get('/panelAdmin/all',  function () {
+    return redirect('/panelAdmin/all/0');
+});
+

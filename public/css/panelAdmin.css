@@ -1,0 +1,40 @@
+
+.div2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column; 
+    width: 100%; 
+    text-align: center; 
+    min-height: 200px;
+}
+
+.div{
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+    text-align: center; 
+    margin: 0 0; 
+    min-height: 200px;
+}
+
+.input{
+    padding: 10px 122px 10px 10px; 
+}
+
+select{
+    padding: 5px 0px; 
+}
+table{
+    border-radius:8px;
+    padding: 10px 10px;
+    background-color: #baadd9;
+    justify-content: center;
+}
+tr{
+    text-align: center;
+}
+
+th{
+    padding: 0 15px;
+}
