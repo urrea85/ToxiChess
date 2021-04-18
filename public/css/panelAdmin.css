@@ -38,3 +38,19 @@ tr{
 th{
     padding: 0 15px;
 }
+
+.button{    
+    color: black;
+    font-weight: 350;
+    font-size: 15px;
+    text-align: center;
+    border-color: mediumpurple;
+    box-shadow: 0 0 40px 40px var(--mainColor) inset, 0 0 0 0 var(--mainColor);
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.button:hover {
+background-color: #604c8a;
+box-shadow: 0 0 10px 0 mediumpurple inset, 0 0 10px 4px mediumpurple;
+}
