@@ -11,6 +11,9 @@
         @section('sidebar')
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="css/app.css">
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="css/styles.css"> 
         <script type="application/javascript">
 
         function showPasswd()
@@ -22,6 +25,17 @@
                 x.type = "password";
             }
         }
+
+        function showRegister()
+        {
+            
+            var x = document.getElementById("oculto");
+            if (x.style.visibility == "hidden") {
+                x.style.visibility = "visible";
+            } else {
+                x.style.visibility = "hidden";
+            }
+        }
         </script>
 
         <div  style="display:flex; position:fixed; top:0; right:0; left:0;" class="btn-group btn-group-justified">
@@ -31,7 +45,7 @@
             <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/home')}}'">Jugar</button>
             <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/perfil')}}'">Perfil</button>
             <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/panelAdmin')}}'">Panel Administrador</button>
-            <button type="button" class="icon" > <i class="bi bi-person-circle" ></i></button>
+            <button type="button" class="icon" onclick="showRegister()"> <i class="bi bi-person-circle" ></i></button>
             <button type="button" class="iconOff"> <i class="bi bi-power"></i></button>
         </div>
 
@@ -44,8 +58,38 @@
             
         </div>
 
-        <div style="position:absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center">
-            <div style="background-color:white;z-index:1;width:400px;height:200px"></div>
+        <div id="oculto" style="position:absolute;top:0;left:0;right:0;bottom:0;background-color:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;visibility:hidden;">
+            <div id="container" class="rectangle3" style="display: flex;">
+            <form>
+                <!-- Username -->
+                <div class="moi">
+                    <i  class="bi bi-person-circle"><input class="input3" type="name" value="Username"></i>
+                </div>
+              
+                <!-- Email -->
+                <div class="moi">
+                    <i class="bi bi-envelope"><input class="input3" type="email" value="Email"></i>
+                </div>
+                
+                <!-- Password -->
+                <div class="moi">
+                <i  class="bi bi-asterisk"><input id="Password" class="input3" type="password"><input type="checkbox" onclick="showPasswd()"></i>
+                </div>
+                <div id="lower" style="display:flex;justify-content:center">
+               
+                    <!-- Submit Button -->
+                    <button class="bootstrap-blue-button-normal-2" type=button >
+                        Log in
+                    </button>
+                    <button class="bootstrap-blue-button-normal-1" value="Register" type=button >
+                        Register
+                    </button>
+                    <button class="bootstrap-blue-button-normal-1" value="Close" type=button style="background:red" onclick="showRegister()">
+                        Close
+                    </button>
+                </div>
+        </form>
+    </div>
         </div>
     </body>
 
