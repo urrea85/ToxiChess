@@ -43,9 +43,17 @@ Route::get('/perfil', function () {
 });
 
 //PANEL ADMINISTRATOR
-Route::get('/panelAdmin', 'UserController@index');
-Route::get('/panelAdmin/{attribute}/{value}', 'UserController@show');
-Route::get('/panelAdmin/all',  function () {
-    return redirect('/panelAdmin/all/0');
+Route::get('/panelAdmin', function () {
+    return view('panelAdmin');
 });
-
+Route::get('/panelAdmin/users', 'UserController@index');
+Route::get('/panelAdmin/users/{attribute}/{value}', 'UserController@show');
+Route::get('/panelAdmin/users/all',  function () {
+    return redirect('/panelAdmin/users/all/0');
+});
+Route::get('/panelAdmin/comments', 'CommentController@index');
+Route::get('/panelAdmin/comments/{attribute}/{value}', 'CommentController@show');
+Route::get('/panelAdmin/comments/all',  function () {
+    return redirect('/panelAdmin/comments/all/0');
+});
+Route::get('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');

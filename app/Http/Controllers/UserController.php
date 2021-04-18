@@ -10,17 +10,14 @@ use Illuminate\Support\Facades\Log;
 class UserController extends Controller
 {
     public function index(){
-        return view('panelAdmin');
+        return view('panelUser');
     }
 
     public function show(Request $request, $attribute, $value){
         $users=[];
         switch($attribute){
             case "id":
-                $user = User::find($value);
-                if($user != null){
-                    $users = [$user];
-                }
+                $users = User::where('id',$value)->paginate();
                 break;
             case "name":
                 $users = User::where('name', 'like', $value.'%')->paginate();
@@ -38,7 +35,7 @@ class UserController extends Controller
                 $users = User::paginate();
                 break;
         }
-        return view('panelAdmin', compact('users'));
+        return view('panelUser', compact('users'));
     }
 
 

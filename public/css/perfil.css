@@ -5,12 +5,13 @@
     display:flex;
 }
 
-form{
+.form2{
     background-color: #baadd9; 
     padding: 30px 60px; 
     border: solid 2px black; 
     border-radius: 10px;
-
+    align-items: center;
+    justify-content: center;
 }
 
 .rectangle-7 {
