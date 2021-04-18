@@ -28,6 +28,9 @@ Route::get('/masterpage', function () {
     return view('masterPage');
 });
 
+Route::get('/register', function () {
+    return view('register');
+});
 //CHAT
 Route::get('/chat', 'ChatController@index');
 
