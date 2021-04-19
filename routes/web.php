@@ -28,6 +28,10 @@ Route::get('/masterpage', function () {
     return view('masterPage');
 });
 
+Route::get('/ranking', function () {
+    return view('ranking');
+});
+
 //CHAT
 Route::get('/chat', 'ChatController@index');
 
