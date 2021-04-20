@@ -13,8 +13,8 @@ class ForeignKeyUserTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreign('dailypoints_id')->references('id')->on('dailypoints');
+        Schema::table('dailypoints', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class ForeignKeyUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('users_dailypoints_id_foreign');
+            $table->dropForeign('dailypoints_user_id_foreign');
         });
     }
 }

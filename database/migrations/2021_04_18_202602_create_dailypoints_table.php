@@ -16,8 +16,8 @@ class CreateDailypointsTable extends Migration
         Schema::create('dailypoints', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamp('date')->useCurrent();
-            $table->points('points');
-            $table->unsignedBigInteger('dailypoint_id');
+            $table->integer('points');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
