@@ -17,7 +17,7 @@ class CreateDailypointsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamp('date')->useCurrent();
             $table->integer('points');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable(false);
             $table->timestamps();
         });
     }

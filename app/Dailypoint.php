@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Dailypoint extends Model
 {
-    public function dailypoints(){
-        return $this->hasMany('App\User');
+    public function user(){
+        return $this->belongsTo('App\User');
     }
 }
