@@ -42,6 +42,6 @@ class User extends Authenticatable
     }
 
     public function dailypoints(){
-        return $this->hasMany('App\Dailypoint');
+        return $this->belongsTo('App\Dailypoint');
     }
 }
