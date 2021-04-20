@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Dailypoint;
 use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
@@ -20,6 +21,7 @@ class UsersTableSeeder extends Seeder
                 'email'=>'a@b.com',
                 'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
                 'nickname'=>'xXpepeXx']);
+        $user->dailypoint()->associate(Dailypoint::all()->random());        
         $user->save();
 
         $user = new User([
@@ -27,6 +29,7 @@ class UsersTableSeeder extends Seeder
             'email'=>'b@b.com',
             'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
             'nickname'=>'juan13']);
+        $user->dailypoint()->associate(Dailypoint::all()->random()); 
         $user->save();
 
         $user = new User([
@@ -34,6 +37,7 @@ class UsersTableSeeder extends Seeder
             'email'=>'moi@b.com',
             'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
             'nickname'=>'byMoiXx']);
+        $user->dailypoint()->associate(Dailypoint::all()->random()); 
         $user->save();
 
         $user = new User([
@@ -41,6 +45,7 @@ class UsersTableSeeder extends Seeder
             'email'=>'Joseli@asd.com',
             'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
             'nickname'=>'Er_JosEh']);
+        $user->dailypoint()->associate(Dailypoint::all()->random()); 
         $user->save();
         
         $user = new User([
@@ -48,6 +53,7 @@ class UsersTableSeeder extends Seeder
             'email'=>'raul123@gmail.com',
             'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
             'nickname'=>'theraulitoOMG']);
+        $user->dailypoint()->associate(Dailypoint::all()->random()); 
         $user->save();
 
         for($i = 0; $i<100; $i++){
@@ -56,6 +62,7 @@ class UsersTableSeeder extends Seeder
                 'email'=>"raul$i@gmail.com",
                 'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
                 'nickname'=>"theraulitoOMG$i"]);
+            $user->dailypoint()->associate(Dailypoint::all()->random()); 
             $user->save();
         }
     }

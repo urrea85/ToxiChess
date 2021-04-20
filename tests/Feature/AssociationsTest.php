@@ -59,4 +59,25 @@ class AssociationsTest extends TestCase
         $comment->delete();
         $game->delete();
     }
+
+    public function testAssociationDailypointUser()
+    {
+        $dailypoint = new Dailypoint();
+        $dailypoint->points = '435 PUNTOS';
+        $dailypoint->save();
+
+        $user = new User();
+        $user->name = 'guillermo';
+        $user->email = 'guille@gmail.com';
+        $user->password = '$2y$10$92IXUNpkjO0rOQ5byMi';
+        $user->nickname = 'willy';
+        $dailypint->users()->save($user);
+        
+        $this->assertEquals($user->dailypoint->points, '435 PUNTOS');
+        $this->assertEquals($dailypoints->user>name,'guillermo');
+
+        $user->delete();
+        $dailypoint->delete();
+    }
+    
 }
