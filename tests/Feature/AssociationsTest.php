@@ -9,6 +9,7 @@ use Tests\TestCase;
 use App\User;
 use App\Game;
 use App\Comment;
+use App\Dailypoint;
 
 class AssociationsTest extends TestCase
 {
@@ -59,4 +60,27 @@ class AssociationsTest extends TestCase
         $comment->delete();
         $game->delete();
     }
+
+    public function testAssociationDailypointUser()
+    {
+        
+
+        $user = new User();
+        $user->name = 'messi';
+        $user->email = 'messirve@gmail.com';
+        $user->password = '$2y$10$92IXUNpkjO0rOQ5byMj';
+        $user->nickname = 'messiXxX';
+        $user->save();
+
+        $dailypoint = new Dailypoint();
+        $dailypoint->points = 435;
+        $user->dailypoints()->save($dailypoint);
+        
+        $this->assertEquals($user->dailypoints[0]->points, 435);
+        $this->assertEquals($dailypoint->user->name,'messi');
+
+        $user->delete();
+        $dailypoint->delete();
+    }
+    
 }
