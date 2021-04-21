@@ -252,3 +252,6 @@ html{
 #lower > button{
     margin: 10px;
 }
+#lower > input{
+    margin: 10px;
+}

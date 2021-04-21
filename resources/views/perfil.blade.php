@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+
 <link rel="stylesheet" href="css/perfil.css">
 <div class="flex-centerbox">
     <div class="form">
@@ -37,4 +38,5 @@
         </form>
     </div>
 </div>
+
 @endsection
