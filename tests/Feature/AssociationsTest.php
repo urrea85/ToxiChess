@@ -66,10 +66,10 @@ class AssociationsTest extends TestCase
         
 
         $user = new User();
-        $user->name = 'eric';
-        $user->email = 'eroc@gmail.com';
+        $user->name = 'messi';
+        $user->email = 'messirve@gmail.com';
         $user->password = '$2y$10$92IXUNpkjO0rOQ5byMj';
-        $user->nickname = 'erikcckc';
+        $user->nickname = 'messiXxX';
         $user->save();
 
         $dailypoint = new Dailypoint();
@@ -77,7 +77,7 @@ class AssociationsTest extends TestCase
         $user->dailypoints()->save($dailypoint);
         
         $this->assertEquals($user->dailypoint->points, 435);
-        $this->assertEquals($dailypoint->user->name,'erikcckc');
+        $this->assertEquals($dailypoint->user->name,'messiXxX');
 
         $user->delete();
         $dailypoint->delete();
