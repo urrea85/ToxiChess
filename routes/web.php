@@ -30,7 +30,9 @@ Route::get('/masterpage', function () {
 
 //RANKING
 Route::get('/ranking/{attr}', 'RankingController@form');
-Route::get('/ranking', 'RankingController@index');
+Route::get('/ranking', function () {
+    return view('ranking');
+});
 
 
 

@@ -16,7 +16,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 
-
     <div style="display:flex; justify-content:center">
 
     <form action="{{url('/ranking/total')}}", method="GET">
@@ -35,13 +34,10 @@
     
 
     <div class="div2">
-    <p style="color:#ffffff; font-weight: bold;">FALTA ORDENAR POR PUNTOS</p>
         <table cellpadding="5"><tr>
         <th>Nickname</th><th>Score</th>
         
-        
-<!-- =='raw' -->
-        @if(true)
+        @if($raw)
         <th>Fecha</th>
         @endif
 
@@ -49,10 +45,10 @@
 
         @foreach ($users as $user)
             <td>{{$user->nickname}}</td>
-            <td>{{$user->puntos}}</td>
+            <td>{{$user->points}}</td>
 
-            @if(true)
-            <th>{{$user->puntos}}</th>
+            @if($raw)
+            <th>{{$user->updated_at}}</th>
             @endif
 
             </tr>
