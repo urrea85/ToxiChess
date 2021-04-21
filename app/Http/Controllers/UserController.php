@@ -66,5 +66,38 @@ class UserController extends Controller
         return view('panelUser', compact('users'));
     }
 
+    public function firstUser(Request $request){
+        $user = User::first();
+        return view('perfil', compact('user'));
+    }
+
+    public function delete(Request $request){
+        $existe = User::where('id',$request->input('Id') );
+        if(!$existe->exists()){
+            $message = "Usuario no existe";
+            return back()->with('message', $message);
+        }
+        else{
+            $existe->delete();
+            return view('perfil');
+        }
+    }
+
+    public function update(Request $request){
+        $existe = User::where('id',$request->input('Id') );
+        if(!$existe->exists()){
+            $message = "Usuario no existe";
+            return back()->with('message', $message);
+        }
+        else{
+             $existe->update(array(
+                'nickname'=>$request->input('nickname'),
+                'name'=>$request->input('name'),
+                'email'=>$request->input('email'),
+                'password'=>$request->input('password')
+            ));
+            return view('perfil');
+        }
+    }
 
 }
