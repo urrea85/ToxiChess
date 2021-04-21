@@ -30,11 +30,6 @@ Route::get('/masterpage', function () {
 
 //RANKING
 Route::get('/ranking', 'RankingController@index');
-
-
-
-
-
 Route::get('/register', function () {
     return view('register');
 });
@@ -65,3 +60,5 @@ Route::get('/panelAdmin/comments/all',  function () {
     return redirect('/panelAdmin/comments/all/0');
 });
 Route::get('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');
+
+Route::post('/register', 'UserController@store');
