@@ -10,22 +10,51 @@
 
     @section('content')
 
-    @isset($users)
-    
+
     <link rel="stylesheet" href="css/panelAdmin.css">
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 
+
+    <div style="display:flex; justify-content:center">
+
+    <form action="{{url('/ranking/total')}}", method="GET">
+        <button type="submit", value="Total", class="button" style="margin: 10px; font-size: 21px" id="rankingTotal"> Total </button>
+    </form>
+    <form action="{{url('/ranking/mensual')}}", method="GET">
+        <button type="submit", value="Mensual",  class="button" style="margin: 10px; font-size: 21px" id="rankingMensual"> Mensual </button>
+    </form>
+    <form action="{{url('/ranking/raw')}}", method="GET">
+        <button type="submit", value="Raw",  class="button" style="margin: 10px; font-size: 21px" id="rankingRaw"> Raw </button>
+    </form>
+
+    </div>
+    @isset($users)
+    
+    
+
     <div class="div2">
     <p style="color:#ffffff; font-weight: bold;">FALTA ORDENAR POR PUNTOS</p>
-        <table cellspacing="10" cellpadding="5" style="padding: 0 30px"><tr>
+        <table cellpadding="5"><tr>
         <th>Nickname</th><th>Score</th>
+        
+        
+<!-- =='raw' -->
+        @if(true)
+        <th>Fecha</th>
+        @endif
+
         </tr>
 
         @foreach ($users as $user)
             <td>{{$user->nickname}}</td>
             <td>{{$user->puntos}}</td>
+
+            @if(true)
+            <th>{{$user->puntos}}</th>
+            @endif
+
             </tr>
         @endforeach
 
