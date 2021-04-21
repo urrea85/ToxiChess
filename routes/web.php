@@ -28,9 +28,6 @@ Route::get('/masterpage', function () {
     return view('masterPage');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
 //CHAT
 Route::get('/chat', 'ChatController@index');
 
@@ -57,3 +54,5 @@ Route::get('/panelAdmin/comments/all',  function () {
     return redirect('/panelAdmin/comments/all/0');
 });
 Route::get('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');
+
+Route::post('/register', 'UserController@store');

@@ -13,6 +13,34 @@ class UserController extends Controller
         return view('panelUser');
     }
 
+    public function store(Request $request){
+        
+        $user = new User;
+        if (!User::where('nickname',$request->input('nickname') )->exists()) {
+            $user->nickname      = $request->input('nickname');
+        }else{
+            $error="Error: nickname already exists!";
+            return back()->with('error', $error);
+        }
+
+        if (!User::where('email',$request->input('email') )->exists()) {
+            $user->email      = $request->input('email');
+        }else{
+            $error="Error: email already exists!";
+            return back()->with('error', $error);
+        }
+            $user->name = "";
+            $user->password = $request->input('password');
+            $user->save();
+
+            //$request->session()->put('user', $request->input('nickname'));
+
+            //redirect
+
+            
+            return back()->with('data',$user);
+    }
+
     public function show(Request $request, $attribute, $value){
         $users=[];
         switch($attribute){
