@@ -76,8 +76,8 @@ class AssociationsTest extends TestCase
         $dailypoint->points = 435;
         $user->dailypoints()->save($dailypoint);
         
-        $this->assertEquals($user->dailypoint->points, 435);
-        $this->assertEquals($dailypoint->user->name,'messiXxX');
+        $this->assertEquals($user->dailypoints[0]->points, 435);
+        $this->assertEquals($dailypoint->user->name,'messi');
 
         $user->delete();
         $dailypoint->delete();
