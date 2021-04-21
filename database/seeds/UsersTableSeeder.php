@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\User;
+use App\Dailypoint;
 use Illuminate\Support\Facades\DB;
 
 class UsersTableSeeder extends Seeder
@@ -19,7 +20,7 @@ class UsersTableSeeder extends Seeder
                 'name'=>'pepe',
                 'email'=>'a@b.com',
                 'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
-                'nickname'=>'xXpepeXx']);
+                'nickname'=>'xXpepeXx']);     
         $user->save();
 
         $user = new User([
