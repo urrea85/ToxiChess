@@ -28,6 +28,18 @@ Route::get('/masterpage', function () {
     return view('masterPage');
 });
 
+//RANKING
+Route::get('/ranking/{attr}', 'RankingController@form');
+Route::get('/ranking', function () {
+    return view('ranking');
+});
+
+
+
+Route::get('/register', function () {
+    return view('register');
+});
+
 //CHAT
 Route::get('/chat', 'ChatController@index');
 
