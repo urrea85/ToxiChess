@@ -66,7 +66,7 @@
             <div id="container" class="rectangle3" style="display: flex;">
             <form method="POST" action="{{url('/register')}}">
                     @csrf
-                    
+                   
                 <!-- Username -->
                 <div class="moi">
                     <i  class="bi bi-person-circle"><input name="nickname" id="nickname" class="input3" type="name" value="Nickname" required></i>
