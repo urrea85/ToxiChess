@@ -15,25 +15,10 @@ class DailypointsTableSeeder extends Seeder
      */
     public function run()
     {
-        
-        $dailypoint = new Dailypoint(['points'=>50]);
-        $dailypoint->user()->associate(User::all()->random());
-        $dailypoint->save();
-
-        $dailypoint = new Dailypoint(['points'=>23]);
-        $dailypoint->user()->associate(User::all()->random());
-        $dailypoint->save();
-
-        $dailypoint = new Dailypoint(['points'=>456]);
-        $dailypoint->user()->associate(User::all()->random());
-        $dailypoint->save();
-
-        $dailypoint = new Dailypoint(['points'=>54]);
-        $dailypoint->user()->associate(User::all()->random());
-        $dailypoint->save();
-
-        $dailypoint = new Dailypoint(['points'=>563]);
-        $dailypoint->user()->associate(User::all()->random());
-        $dailypoint->save();
+        for ($i = 0 ; $i<200 ; $i++){
+            $dailypoint = new Dailypoint(['points'=>random_int(1,500)]);
+            $dailypoint->user()->associate(User::all()->random());
+            $dailypoint->save();
+        }
     }
 }

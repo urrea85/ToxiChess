@@ -34,8 +34,8 @@
     
 
     <div class="div2">
-        <table cellpadding="5"><tr>
-        <th>Nickname</th><th>Score</th>
+        <table cellspacing="5" style="margin-top:10px; padding:10px 20px; border-collapse:inherit"><tr>
+        <th style="padding:0px 25px">Nickname</th><th style="padding:0px 25px">Score</th>
         
         @if($raw)
         <th>Fecha</th>
