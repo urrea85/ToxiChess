@@ -84,21 +84,31 @@ class UserController extends Controller
     }
 
     public function update(Request $request){
-        $existe = User::where('id',$request->input('Id') );
+        $update = User::where('id',$request->input('Id') );
+        $existe = User::find($request->input('Id') );
         if(!$existe->exists()){
             $message = "Usuario no existe";
-            return back()->with('message', $message);
+            return view('perfil', compact('message'));
         }
         else{
-            
-             $existe->update(array(
-                'nickname'=>$request->input('Nickname'),
-                'name'=>$request->input('Name'),
-                'email'=>$request->input('Email'),
-                'password'=>$request->input('Password')
-            ));
-            return view('perfil');
+            if (User::where('nickname',$request->input('Nickname'))->exists() && $existe->nickname!=$request->input('Nickname')) {
+                $message="Error: nickname already exists!";
+                return view('perfil', compact('message'));
+            }else{
+                if (User::where('email',$request->input('Email'))->exists() && $existe->email!=$request->input('Email')) {
+                    $message="Error: email already exists!";
+                    return view('perfil', compact('message'));
+                }else{
+                    $update->update(array(
+                        'nickname'=>$request->input('Nickname'),
+                        'name'=>$request->input('Name'),
+                        'email'=>$request->input('Email'),
+                        'password'=>$request->input('Password')
+                    ));
+                    $message="Actualizado correctamente";
+                    return view('perfil', compact('message'));
+                }
+            } 
         }
     }
-
 }
