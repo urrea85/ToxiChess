@@ -43,9 +43,9 @@
                 <label class="rectangle-7">Points</label>      <input type="" id="Points" name="Points" readonly="readonly"/> 
             </div>
             <div style="padding: 10px 0px">
-                <input type="submit" value="Actualizar Datos" class="icon"></i></input>  
+                <input type="submit" value="Actualizar Datos" class="icon" style="color:black"></i></input>  
                 
-                <button type="button" class="iconOff" onclick="borrarUsuario()">Eliminar Cuenta</i></button>
+                <button type="button" class="iconOff" onclick="borrarUsuario()" style="color:black">Eliminar Cuenta</i></button>
             </div>
             
             @isset($user)
