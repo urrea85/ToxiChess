@@ -16,9 +16,9 @@ Route::get('/', function () {
     return redirect('home');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', 'ChessController@index');
+
+Route::post('/updateChess', 'ChessController@updateChess');
 
 Route::get('/chess', function () {
     return view('chess');

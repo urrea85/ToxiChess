@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae499b88bd651d119e9cd2aa660d0051",
+    "content-hash": "c4163988e0da69ada2d345a46b21a9f2",
     "packages": [
         {
             "name": "beyondcode/laravel-websockets",
@@ -1426,6 +1426,67 @@
                 "serialize"
             ],
             "time": "2020-11-07T02:01:34+00:00"
+        },
+        {
+            "name": "p-chess/chess",
+            "version": "0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/p-chess/chess.git",
+                "reference": "ed2b5f9ca6bab25182b2cdf1dfc3a16d28861bab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/p-chess/chess/zipball/ed2b5f9ca6bab25182b2cdf1dfc3a16d28861bab",
+                "reference": "ed2b5f9ca6bab25182b2cdf1dfc3a16d28861bab",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": "^7.2 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.18",
+                "imagine/imagine": "^1.2",
+                "johnkary/phpunit-speedtrap": "^3.3",
+                "phpbench/phpbench": "^1.0@alpha",
+                "phpstan/phpstan": "^0.12",
+                "phpunit/phpunit": "^8.5 || ^9.5"
+            },
+            "suggest": {
+                "imagine/imagine": "To generate board images."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PChess\\Chess\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "ryan hs",
+                    "email": "mr.ryansilalahi@gmail.com"
+                },
+                {
+                    "name": "Arkadiusz Kondas",
+                    "email": "arkadiusz.kondas@gmail.com"
+                },
+                {
+                    "name": "Massimiliano Arione",
+                    "email": "garakkio@gmail.com"
+                }
+            ],
+            "description": "A PHP chess library that is used for chess move generation/validation, piece placement/movement, and check/checkmate/stalemate detection",
+            "time": "2021-04-18T17:18:35+00:00"
         },
         {
             "name": "paragonie/random_compat",

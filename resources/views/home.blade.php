@@ -38,6 +38,9 @@ crossorigin="anonymous"></script>
         </form>
     </div>
 </div>
+<script>
+var time = {{ $time }} ;
+var fen = "{{ $fen }}" ;
+</script>
 <script src="js/chat.js"></script>
-<script src="js/chessB.js"></script>
 @endsection
