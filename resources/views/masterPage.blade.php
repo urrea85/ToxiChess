@@ -45,7 +45,7 @@
 
         <div  style="display:flex; position:fixed; top:0; right:0; left:0;" class="btn-group btn-group-justified">
             <button style="vertical-align: middle;" type="button" class="logo" onclick="window.location='{{url('/home')}}'"><img src="img/logoRecortado.png"></button>
-            <button type="button" class="horizontal-menu-2">Ranking</button>
+            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/ranking')}}'">Ranking</button>
             <button type="button" class="horizontal-menu-2">Historial</button>
             <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/home')}}'">Jugar</button>
             <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/perfil')}}'">Perfil</button>
