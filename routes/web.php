@@ -47,9 +47,10 @@ Route::post('/sendMessage', 'ChatController@sendMessage');
 Route::post('sendMessage', 'ChatController@sendMessage');
 
 //PROFILE
-Route::get('/perfil', function () {
-    return view('perfil');
-});
+
+Route::get('/perfil', 'UserController@firstUser');
+Route::get('/perfil/{id}', 'UserController@delete');
+Route::put('/perfil', 'UserController@update');
 
 //PANEL ADMINISTRATOR
 Route::get('/panelAdmin', function () {
