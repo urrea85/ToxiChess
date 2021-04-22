@@ -7,7 +7,7 @@
         {
             var input = document.getElementById("idMessage").value;
             var select = document.getElementById("content").value;
-            if (input == "" && select != ""){
+            if (input == "" || select == ""){
                 alert("Debes llenar el campo")
                 return false;
             }else {
@@ -52,15 +52,25 @@
         <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
             <?php echo $comments->render() ;?>
         </div>
-        <div style="padding: 10px 0px">
-            <label class="rectangle-7">ID</label>  <input  class="" type="number" id="idMessage" name="id" /> 
-        </div style="padding: 10px 0px">
-        <div style="padding: 10px 0px">
-            <label class="rectangle-7">New Message</label>  <input  class="" type="text" id="content" name="id2" /> 
-        </div style="padding: 10px 0px">
-        <div style="padding: 10px 0px">
-            <button type="button" class="icon" style=" font-size: 21px" onclick="actualizarComentarios()"> Actualizar</i></button>  
-        </div style="padding: 10px 0px">
+
+        <form method='POST' action = "{{url('/panelAdmin/comments')}}">
+            @csrf
+            @method('DELETE')
+            <div style="padding: 10px 0px">
+                <label class="rectangle-7">ID</label>  <input  class="" type="number" id="idMessage" name="id"/> 
+            </div style="padding: 10px 0px">
+            <div style="padding: 10px 0px">
+                <label class="rectangle-7">New Message</label>  <input  class="" type="text" id="content" name="id2" /> 
+            </div style="padding: 10px 0px">
+            <div style="padding: 10px 0px">
+                <button type="button" class="icon" style=" font-size: 21px;color:black" onclick="actualizarComentarios()"> Actualizar</i></button>
+                <input type="submit" class="iconOff" style=" font-size: 21px; color:black" value="Eliminar"></i></input>  
+            </div style="padding: 10px 0px">
+
+            @if (session()->has('message'))
+                    <p style="text-align:center; color: red; text-size: 15px;">{{session('message')}}</p>
+            @endif
+        </form>
   
         @endisset
 @endsection

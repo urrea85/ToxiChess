@@ -94,7 +94,6 @@
                 </div>
                 @if (session()->has('error'))
                     <script>
-                        console.log("uwu");
                             var x = document.getElementById("oculto");
                             if (x.style.visibility == "hidden") {
                                 x.style.visibility = "visible";
@@ -114,8 +113,8 @@
 
     <footer>
         <div style="display:flex; position: fixed; bottom: 2%; right:1%;">
-                <button type="button" class="redes" style="background:lightskyblue; margin-right:10px"> <i class="bi bi-twitter"></i></button>
-                <button type="button" class="redes" style="background:orchid"> <i class="bi bi-instagram"></i></button>
+                <button type="button" class="redes" style="background:lightskyblue; margin-right:10px" onclick="location.href='https://twitter.com/UA_Universidad'"> <i class="bi bi-twitter"></i></button>
+                <button type="button" class="redes" style="background:orchid" onclick="location.href='https://www.instagram.com/ua_universidad/'"> <i class="bi bi-instagram"></i></button>
         </div>
     </footer>
     {{-- MODO EMPLEO YIELD

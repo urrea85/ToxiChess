@@ -36,10 +36,28 @@ class CommentController extends Controller
 
     public function update(Request $request, $id, $content){
 
-        Comment::where('id', $id)->update(array(
-            'content'=>$content,
-        ));
+        $existe = Comment::where('id',$id);
+        if(!$existe->exists()){
+            $message = "Error: Comentario no existe";
+            return back()->with('message', $message);
+        }else{
+            Comment::where('id', $id)->update(array(
+                'content'=>$content,
+            ));
 
-        return redirect('/panelAdmin/comments/id/'.$id);
+            return redirect('/panelAdmin/comments/id/'.$id);
+        }
+    }
+
+    public function delete(Request $request){
+        $existe = Comment::where('id',$request->input('id') );
+        if(!$existe->exists()){
+            $message = "Error: Comentario no existe";
+            return back()->with('message', $message);
+        }
+        else{
+            $existe->delete();
+            return back();
+        }
     }
 }

@@ -62,10 +62,10 @@ Route::get('/panelAdmin/users/all',  function () {
     return redirect('/panelAdmin/users/all/0');
 });
 Route::get('/panelAdmin/comments', 'CommentController@index');
+Route::delete('/panelAdmin/comments', 'CommentController@delete');
 Route::get('/panelAdmin/comments/{attribute}/{value}', 'CommentController@show');
 Route::get('/panelAdmin/comments/all',  function () {
     return redirect('/panelAdmin/comments/all/0');
 });
 Route::get('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');
-
 Route::post('/register', 'UserController@store');
