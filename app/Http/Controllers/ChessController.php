@@ -6,43 +6,47 @@ use App\Events\MakeMove;
 use Illuminate\Http\Request;
 use PChess\Chess\Chess;
 use Illuminate\Support\Facades\Log;
+use App\GameData;
 
 class ChessController extends Controller
 {
+    public static $test = 1;
     const turnTime = 15.0;
-    public $chess = null;
-    public $started = false;
-    public $remainingTime = 0.0;
-    public $votes = [];
-    public $turnStartTime = 0.0;
+    public $data = null;
+
+    public function __construct(){
+        self::$test += 1;
+        Log::debug(self::$test);
+        $this->data = GameData::getInstance();
+    }
 
     public function index(){
         $this->updateChess();
-        Log::debug("hello?");
-        //return view('home',['chess' => $this->gameStatus()]);
-        return view('home',['time'=>$this->remainingTime, 'fen'=>$this->chess->fen()]);
+        //return view('home',['chess' => $this->data->gameStatus()]);
+        return view('home',['time'=>$this->data->remainingTime, 'fen'=>$this->data->chess->fen()]);
         
     }
 
     public function updateChess(){
-        if (!$this->started){
-            $this->started = true;
-            $this->chess = new Chess();
+        if (!$this->data->started){
+            $this->data->started = true;
+            $this->data->chess = new Chess();
             //TODO: delete
-            $this->chess->move('e4');
-            $this->remainingTime = self::turnTime;
-            $this->turnStartTime = microtime(true);
+            Log::debug("started");
+            $this->data->chess->move('e4');
+            $this->data->remainingTime = self::turnTime;
+            $this->data->turnStartTime = microtime(true);
         }
         else{
-            $this->remainingTime = self::turnTime - (microtime(true) - $this->turnStartTime);
-            if ($this->remainingTime<=0.0){
+            $this->data->remainingTime = self::turnTime - (microtime(true) - $this->data->turnStartTime);
+            if ($this->data->remainingTime<=0.0){
                 $this->makeMove();
             }
         }
     }
 
     public function gameStatus(){
-        return ['time'=>$this->remainingTime, 'fen'=>$this->chess->fen()];
+        return ['time'=>$this->data->remainingTime, 'fen'=>$this->data->chess->fen()];
     }
     
     public function makeMove(){
@@ -50,16 +54,16 @@ class ChessController extends Controller
         $end = false;
         $result = "";
         $move = "";
-        if (!empty($this->votes)){
-            $move = $this->votes[array_rand($this->votes)];
-            $this->chess->move($move);
+        if (!empty($this->data->votes)){
+            $move = $this->data->votes[array_rand($this->data->votes)];
+            $this->data->chess->move($move);
             $repeat = false;
         }
-        $this->remainingTime = self::turnTime;
-        $this->turnStartTime = microtime(true);
-        if ($this->chess->gameOver()){
+        $this->data->remainingTime = self::turnTime;
+        $this->data->turnStartTime = microtime(true);
+        if ($this->data->chess->gameOver()){
             $end = true;
-            $this->started = false;
+            $this->data->started = false;
         }
         broadcast(new MakeMove($move,$repeat,$end,$result));
     }
