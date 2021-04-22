@@ -71,8 +71,8 @@ class UserController extends Controller
         return view('perfil', compact('user'));
     }
 
-    public function delete(Request $request){
-        $existe = User::where('id',$request->input('Id') );
+    public function delete(Request $request, $id){
+        $existe = User::where('id',$id );
         if(!$existe->exists()){
             $message = "Usuario no existe";
             return back()->with('message', $message);
@@ -87,16 +87,26 @@ class UserController extends Controller
         $existe = User::where('id',$request->input('Id') );
         if(!$existe->exists()){
             $message = "Usuario no existe";
-            return back()->with('message', $message);
+            return view('perfil', compact('message'));
         }
         else{
-             $existe->update(array(
-                'nickname'=>$request->input('nickname'),
-                'name'=>$request->input('name'),
-                'email'=>$request->input('email'),
-                'password'=>$request->input('password')
-            ));
-            return view('perfil');
+            if (User::where('nickname',$request->input('Nickname') )->exists()) {
+                $message="Error: nickname already exists!";
+                return view('perfil', compact('message'));
+            }else{
+                if (User::where('email',$request->input('Email') )->exists()) {
+                    $message="Error: email already exists!";
+                    return view('perfil', compact('message'));
+                }else{
+                    $existe->update(array(
+                        'nickname'=>$request->input('Nickname'),
+                        'name'=>$request->input('Name'),
+                        'email'=>$request->input('Email'),
+                        'password'=>$request->input('Password')
+                    ));
+                    return view('perfil');
+                }
+            }   
         }
     }
 

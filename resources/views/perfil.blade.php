@@ -8,13 +8,19 @@
 @endsection
 
 @section('content')
-
+<script>
+    function borrarUsuario(){
+        x = document.getElementById("Id").value;
+        window.location="perfil/"+x;
+    }
+</script>
 <link rel="stylesheet" href="css/perfil.css">
 <div class="flex-centerbox">
     <div class="form">
         <form method='POST' action = "{{url('/perfil')}}"class="form2">
             @csrf
-            @method('DELETE')
+            
+            @method('PUT')
             <div style="padding: 10px 0px">
                 <label class="rectangle-7">Id</label> <input class=" " type="text" id="Id" name="Id" readonly="readonly"/>
             </div>
@@ -38,7 +44,8 @@
             </div>
             <div style="padding: 10px 0px">
                 <input type="submit" value="Actualizar Datos" class="icon"></i></input>  
-                <input type="submit" value="Eliminar Cuenta" class="iconOff"></i></input>
+                
+                <button type="button" class="iconOff" onclick="borrarUsuario()">Eliminar Cuenta</i></button>
             </div>
             
             @isset($user)
@@ -51,11 +58,11 @@
                 document.getElementById("Total games").value = '<?php echo $user->total_games?>';
             </script>
             @endisset
-            @if (session()->has('message'))   
+            @isset($message)
             <script>
-                alert("Usuario con id ''"+ document.getElementById("Id").value +"'' no existe");
+                alert({{$message}});
             </script>
-            @endif
+            @endisset
             
         </form>
     </div>

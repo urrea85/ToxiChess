@@ -37,7 +37,7 @@ Route::post('sendMessage', 'ChatController@sendMessage');
 //PROFILE
 
 Route::get('/perfil', 'UserController@firstUser');
-Route::delete('/perfil', 'UserController@delete');
+Route::get('/perfil/{id}', 'UserController@delete');
 Route::put('/perfil', 'UserController@update');
 
 //PANEL ADMINISTRATOR
