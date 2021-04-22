@@ -58,11 +58,11 @@
                 document.getElementById("Total games").value = '<?php echo $user->total_games?>';
             </script>
             @endisset
-            @isset($message)
+            @if (session()->has('message'))   
             <script>
-                alert({{$message}});
+                alert("Usuario con id ''"+ document.getElementById("Id").value +"'' no existe");
             </script>
-            @endisset
+            @endif
             
         </form>
     </div>
