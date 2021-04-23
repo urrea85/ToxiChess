@@ -19,6 +19,7 @@ class CreateStatesTable extends Migration
             $table->boolean("started");
             $table->double("remainingTime")->default(0.0);
             $table->double("turnStartTime")->default(0.0);
+            $table->timestamp("gameStartTime")->nullable(true);
             $table->timestamps();
         });
     }

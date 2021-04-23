@@ -189,6 +189,20 @@ Echo.channel('chess')
       else{
         console.log("repeat");
       }
+      if (e.end){
+        var result = "White won the game";
+        if (e.result == "draw"){
+          result = "The game resulted in a draw";
+        }
+        if (e.result == "black"){
+          result = "Black won the game"
+        }
+        document.getElementById("resultContent").innerHTML = result;
+        var popup = new bootstrap.Modal(document.getElementById('resultsModal'));
+        popup.toggle();
+        game = new Chess();
+        board.position(game.fen());
+      }
       time = e.time;
       startTime = Date.now()/1000.0;
     });

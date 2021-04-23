@@ -8,10 +8,12 @@ use PChess\Chess\Chess;
 use Illuminate\Support\Facades\Log;
 use App\State;
 use App\Vote;
+use App\Game;
+use App\User;
 
 class ChessController extends Controller
 {
-    const turnTime = 15.0;
+    const turnTime = 5.0;
     public $state = null;
     public $chess = null;
 
@@ -44,6 +46,8 @@ class ChessController extends Controller
             Log::debug("started");
             $this->state->remainingTime = self::turnTime;
             $this->state->turnStartTime = microtime(true);
+            $this->state->gameStartTime = now();
+            $this->chess = new Chess();
         }
         else{
             $this->state->remainingTime = self::turnTime - (microtime(true) - $this->state->turnStartTime);
@@ -84,6 +88,13 @@ class ChessController extends Controller
             $end = true;
             $this->state->started = false;
             $this->state->fen = "";
+
+            $game = new Game();
+            $game->moves = $this->getMoves();
+            $game->result = $this->getResult();
+            $game->start = $this->state->gameStartTime;
+            $game->end = now();
+            $game->save();
         }
         Log::debug($move);
         Log::debug(10);
@@ -103,5 +114,34 @@ class ChessController extends Controller
         $vote->move = $request->move;
         $this->state->votes()->save($vote);
         Log::debug("reaches?");
+    }
+
+    public function getMoves(){
+        $result = "";
+        foreach ($this->chess->getHistory()->getEntries() as $entry) {
+            $result = $result . $entry->move->from . "-" . $entry->move->to . ",";
+        }
+        return substr($result,0,-1);
+    }
+
+    public function getResult(){
+        if ($this->chess->inDraw()){
+            return "draw";
+        }
+        if ($this->chess->inCheckmate()){
+            if ($this->chess->turn == "w"){
+                return "black";
+            }
+            return "white";
+        }
+        Log::debug("Shouldn't happen");
+        return "draw";
+    }
+
+    public function givePoints(){
+        //Todo: get users that played the game
+        $users = User::random(10);
+        foreach ($users as $user){
+        }
     }
 }
