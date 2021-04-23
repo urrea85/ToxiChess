@@ -69,3 +69,8 @@ Route::get('/panelAdmin/comments/all',  function () {
 });
 Route::get('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');
 Route::post('/register', 'UserController@store');
+
+
+//HISTORIAL
+Route::get('/historial', 'GamesController@index');
+Route::delete('/historial', 'GamesController@delete');
