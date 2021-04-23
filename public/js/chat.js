@@ -116,8 +116,8 @@ function onDragStart (source, piece) {
   if (game.game_over()) return false
 
   // or if it's not that side's turn
-  if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
-      (game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+  if ((game.turn() === 'w' && ((piece.search(/^b/) !== -1) || side =='b')) ||
+      (game.turn() === 'b' && ((piece.search(/^w/) !== -1) || side =='w'))) {
     return false
   }
 }
@@ -139,7 +139,11 @@ function onDrop (source, target) {
 }
 
 function onMouseoverSquare (square, piece) {
+  if (piece==false) return;
   // get list of possible moves for this square
+  if ((piece.search(/^b/) !== -1) && side=='w') return;
+  if ((piece.search(/^w/) !== -1) && side=='b') return;
+
   var moves = game.moves({
     square: square,
     verbose: true

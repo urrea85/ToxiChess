@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamp('date')->useCurrent();
             $table->string('content');
-            $table->boolean('color'); //false black, true white
+            $table->string('color'); //"w" and "b"
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('game_id');
             $table->timestamps();

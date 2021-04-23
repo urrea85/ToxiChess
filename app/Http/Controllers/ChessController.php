@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Dailypoint;
 use App\Events\MakeMove;
 use Illuminate\Http\Request;
 use PChess\Chess\Chess;
@@ -95,6 +96,7 @@ class ChessController extends Controller
             $game->start = $this->state->gameStartTime;
             $game->end = now();
             $game->save();
+            $this->givePoints();
         }
         Log::debug($move);
         Log::debug(10);
@@ -140,8 +142,11 @@ class ChessController extends Controller
 
     public function givePoints(){
         //Todo: get users that played the game
-        $users = User::random(10);
+        $users = User::all()->random(10);
         foreach ($users as $user){
+            $points = new Dailypoint();
+            $points->points = random_int(1,500);
+            $user->dailypoints()->save($points);
         }
     }
 }

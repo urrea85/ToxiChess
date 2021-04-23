@@ -15,7 +15,7 @@ crossorigin="anonymous"></script>
         <ul id="messages-w" class="messages">
         </ul>
         <form id="form-w" class="chat-form" action="">
-            <input id="message-w" style="flex:1" class="" autocomplete="off" />
+            <input id="message-w" style="flex:1;width:0"" class="" autocomplete="off" />
             <input type="submit"  value="Submit" />
         </form>
     </div>
@@ -33,7 +33,7 @@ crossorigin="anonymous"></script>
             <li>SomeUser69: We could've checked with queen and we would have enough time to move the bishop away</li>
         </ul>
         <form id="form-b" class="chat-form" action="">
-            <input id="message-b" style="flex:1;" autocomplete="off" />
+            <input id="message-b" style="flex:1;width:0" autocomplete="off" />
             <input type="submit" value="Submit" />
         </form>
     </div>
