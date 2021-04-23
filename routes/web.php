@@ -16,9 +16,10 @@ Route::get('/', function () {
     return redirect('home');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+Route::get('/home', 'ChessController@index');
+
+Route::post('/updateChess', 'ChessController@updateChess');
+Route::post('/vote', 'ChessController@vote');
 
 Route::get('/chess', function () {
     return view('chess');
@@ -45,7 +46,6 @@ Route::get('/register', function () {
 Route::get('/chat', 'ChatController@index');
 
 Route::post('/sendMessage', 'ChatController@sendMessage');
-Route::post('sendMessage', 'ChatController@sendMessage');
 
 //PROFILE
 

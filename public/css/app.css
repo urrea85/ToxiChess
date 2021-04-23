@@ -86,7 +86,7 @@ html{
     margin:0px;
 }
 
-.container{
+.container2{
     height: 100%;
     margin:0px;
     box-sizing:border-box;
@@ -185,6 +185,14 @@ html{
 .messages > li { padding: 0.5rem 1rem; background-color: var(--chatColor1);}
 .messages > li:nth-child(odd) { background: var(--chatColor2); }
 
+#timer {
+    background: var(--chatColor1);
+    padding: 5px 30px;
+    margin-top: 10px;
+    border: black 3px solid;
+    border-radius: 10px;
+    font-size:50px;
+}
 
 .rectangle3{
 

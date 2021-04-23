@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class CreateStatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
+        Schema::create('states', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamp('date')->useCurrent();
-            $table->string('content');
-            $table->string('color'); //"w" and "b"
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('game_id');
+            $table->string("fen")->default("");
+            $table->boolean("started");
+            $table->double("remainingTime")->default(0.0);
+            $table->double("turnStartTime")->default(0.0);
+            $table->timestamp("gameStartTime")->nullable(true);
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::dropIfExists('states');
     }
 }

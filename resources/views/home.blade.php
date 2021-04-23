@@ -15,12 +15,13 @@ crossorigin="anonymous"></script>
         <ul id="messages-w" class="messages">
         </ul>
         <form id="form-w" class="chat-form" action="">
-            <input id="message-w" style="flex:1" class="" autocomplete="off" />
+            <input id="message-w" style="flex:1;width:0"" class="" autocomplete="off" />
             <input type="submit"  value="Submit" />
         </form>
     </div>
-    <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center">
-        <div id="myBoard" style="width:85%"></div>
+    <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center; flex-direction: column">
+        <div id="myBoard" style="width:80%"></div>
+        <div id="timer">00 S</div>
     </div>
     <div id="chat-container-b" class="chat-container">
         <ul id="messages-b" class="messages">
@@ -32,11 +33,32 @@ crossorigin="anonymous"></script>
             <li>SomeUser69: We could've checked with queen and we would have enough time to move the bishop away</li>
         </ul>
         <form id="form-b" class="chat-form" action="">
-            <input id="message-b" style="flex:1;" autocomplete="off" />
+            <input id="message-b" style="flex:1;width:0" autocomplete="off" />
             <input type="submit" value="Submit" />
         </form>
     </div>
 </div>
+
+<div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Results</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="resultContent" class="modal-body">
+        The result was: 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+var time = {{ $time }} ;
+var fen = "{{ $fen }}" ;
+</script>
 <script src="js/chat.js"></script>
-<script src="js/chessB.js"></script>
 @endsection
