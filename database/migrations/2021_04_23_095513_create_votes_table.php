@@ -17,6 +17,7 @@ class CreateVotesTable extends Migration
             $table->bigIncrements('id');
             $table->string("move");
             $table->unsignedBigInteger("state_id");
+            $table->timestamps();
         });
     }
 

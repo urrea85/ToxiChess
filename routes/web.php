@@ -19,6 +19,7 @@ Route::get('/', function () {
 Route::get('/home', 'ChessController@index');
 
 Route::post('/updateChess', 'ChessController@updateChess');
+Route::post('/vote', 'ChessController@vote');
 
 Route::get('/chess', function () {
     return view('chess');

@@ -69,11 +69,19 @@ function changeSide(newSide){
     side = newSide
 }
 
+function isMoveLegal(move){
+  var temp = new Chess(game.fen());
+  if (temp.move(move,{sloppy:true})==null){
+    return false;
+  }
+  return true;
+}
+
 function setTimer(){
     actualTime = time - (Date.now()/1000.0 - startTime);
     if (actualTime<=0.0){
       actualTime = 0.0;
-      //axios.post("updateChess");
+      axios.post("updateChess");
     } 
     document.getElementById("timer").innerHTML = actualTime.toFixed(1) + " S";
 }
@@ -120,14 +128,14 @@ function onDrop (source, target) {
   console.log(target);
 
   // see if the move is legal
-  var move = game.move({
-    from: source,
-    to: target,
-    promotion: 'q' // NOTE: always promote to a queen for example simplicity
-  })
-
-  // illegal move
-  if (move === null) return 'snapback'
+  var nmove = source + '-' + target;
+  if (isMoveLegal(nmove)){
+    axios.post("vote",{move:nmove});
+  }
+  else{
+    console.log("wait, that's illegal!");
+  }
+  return 'snapback'
 }
 
 function onMouseoverSquare (square, piece) {
@@ -169,9 +177,12 @@ var config = {
 board = Chessboard('myBoard', config);
 $(window).resize(board.resize);
 
-/*Echo.channel('chess')
+Echo.channel('chess')
     .listen('MakeMove', (e) => {
+      console.log(e.move)
+      console.log("a");
       if (!e.repeat){
+        console.log("does");
         game.move(e.move,{sloppy:true})
         board.position(game.fen());
       }
@@ -180,4 +191,4 @@ $(window).resize(board.resize);
       }
       time = e.time;
       startTime = Date.now()/1000.0;
-    });*/
+    });
