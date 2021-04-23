@@ -30,6 +30,7 @@ Route::get('/masterpage', function () {
 
 //RANKING
 Route::get('/ranking/{attr}', 'RankingController@form');
+Route::delete('/ranking/raw', 'RankingController@delete');
 Route::get('/ranking', function () {
     return view('ranking');
 });

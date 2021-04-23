@@ -35,6 +35,10 @@
 
     <div class="div2">
         <table cellspacing="5" style="margin-top:10px; padding:10px 20px; border-collapse:inherit"><tr>
+
+        @if($raw)
+        <th>Id</th>
+        @endif
         <th style="padding:0px 25px">Nickname</th><th style="padding:0px 25px">Score</th>
         
         @if($raw)
@@ -44,6 +48,9 @@
         </tr>
 
         @foreach ($users as $user)
+            @if($raw)
+            <th>{{$user->id}}</th>
+            @endif
             <td>{{$user->nickname}}</td>
             <td>{{$user->points}}</td>
 
@@ -55,11 +62,32 @@
         @endforeach
 
         </table>
-    </div>
 
+
+        @if($raw)
+        <form method='POST' action = "{{url('/ranking/raw')}}">
+            @csrf
+            @method('DELETE')
+            <div style="padding: 10px 0px">
+                <label class="rectangle-7">ID</label>
+                <input  class="" type="number" id="idPoints" name="id"/> 
+            </div style="padding: 10px 0px">
+            <div style="padding: 10px 0px">
+                <input type="submit" class="iconOff" style=" font-size: 21px; color:black" value="Eliminar"></i></input>  
+            </div style="padding: 10px 0px">
+
+            @if (session()->has('message'))
+                    <p style="text-align:center; color: red; text-size: 15px;">{{session('message')}}</p>
+            @endif
+        </form>
+        @endif
+
+    </div>
     <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
         <?php echo $users->render(); ?>
     </div>
+
+
     @endisset
 
     @endsection

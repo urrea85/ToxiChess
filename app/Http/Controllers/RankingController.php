@@ -28,6 +28,18 @@ class RankingController extends Controller
         }
         
         return view('/ranking', compact('users'))->with('raw', $raw);
+    }
 
+    public function delete(Request $request){
+        
+        $existe = Dailypoint::where('id',$request->input('id'));
+        if(!$existe->exists()){
+            $message = "Error: Id de puntos no existe";
+            return back()->with('message', $message);
+        }
+        else{
+            $existe->delete();
+            return back();
+        }
     }
 }
