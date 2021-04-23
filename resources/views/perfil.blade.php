@@ -58,6 +58,12 @@
                 document.getElementById("Total games").value = '<?php echo $user->total_games?>';
             </script>
             @endisset
+
+            @isset($total)
+            <script>
+                document.getElementById("Points").value = '<?php echo $total?>';
+            </script>
+            @endisset
             @isset($message)
             <p style="text-align: center;">
                 {{$message}}

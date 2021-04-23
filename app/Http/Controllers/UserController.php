@@ -68,7 +68,18 @@ class UserController extends Controller
 
     public function firstUser(Request $request){
         $user = User::first();
-        return view('perfil', compact('user'));
+        $points= DB::table('users')
+        ->join('dailypoints', 'user_id', '=', 'users.id')
+        ->groupBy('users.id')
+        ->get([
+            DB::raw('sum(dailypoints.points) as points')
+        ]);
+        $total = 0;
+        foreach($points as $point){
+
+            $total += $point->points;
+        }
+        return view('perfil', compact('user','total'));
     }
 
     public function delete(Request $request, $id){

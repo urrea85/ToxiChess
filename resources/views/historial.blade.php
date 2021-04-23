@@ -5,7 +5,6 @@
 @section('sidebar')
     @parent
 
-    <p>This is appended to the master sidebar.</p>
 @endsection
 
 @section('content')
@@ -16,7 +15,7 @@
 
 <div class="div1">
 @isset($games)
-    <div class="div2">
+    <div class="div2" style="margin-top:20px;">
             <table cellspacing="10" cellpadding="5" style="padding: 0 30px"><tr>
             <th>Id</th><th>Result</th><th>Start</th><th>End</th>
             </tr>

@@ -4,8 +4,6 @@
 
 @section('sidebar')
     @parent
-
-    <p>This is appended to the master sidebar.</p>
 @endsection
 
 @section('content')
@@ -52,7 +50,7 @@
 
     </script>
 
-    <div class="div">
+    <div class="div" style="margin-top:20px;">
 
         <button  class="button" style="margin: 10px; font-size: 21px" id="user" onclick="window.location='{{url('/panelAdmin/users')}}'"> Users </button> 
         <button class="button" style="margin: 10px; font-size: 21px" id="comment" onclick="window.location='{{url('/panelAdmin/comments')}}'"> Comments </button> 
