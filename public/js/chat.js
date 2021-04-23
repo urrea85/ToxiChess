@@ -71,7 +71,10 @@ function changeSide(newSide){
 
 function setTimer(){
     actualTime = time - (Date.now()/1000.0 - startTime);
-    if (actualTime<=0.0) actualTime = 0.0;
+    if (actualTime<=0.0){
+      actualTime = 0.0;
+      //axios.post("updateChess");
+    } 
     document.getElementById("timer").innerHTML = actualTime.toFixed(1) + " S";
 }
 
@@ -113,6 +116,8 @@ function onDragStart (source, piece) {
 
 function onDrop (source, target) {
   removeGreySquares()
+  console.log(source);
+  console.log(target);
 
   // see if the move is legal
   var move = game.move({
@@ -163,3 +168,16 @@ var config = {
 }
 board = Chessboard('myBoard', config);
 $(window).resize(board.resize);
+
+/*Echo.channel('chess')
+    .listen('MakeMove', (e) => {
+      if (!e.repeat){
+        game.move(e.move,{sloppy:true})
+        board.position(game.fen());
+      }
+      else{
+        console.log("repeat");
+      }
+      time = e.time;
+      startTime = Date.now()/1000.0;
+    });*/

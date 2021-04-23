@@ -19,18 +19,20 @@ class MakeMove implements ShouldBroadcast
     public $repeat;
     public $end;
     public $result;
+    public $time;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($move, $repeat, $end, $result)
+    public function __construct($move, $repeat, $end, $result, $time)
     {
         $this->move = $move;
         $this->repeat = $repeat;
         $this->end = $end;
         $this->results = $result;
+        $this->time = $time;
     }
 
     /**
