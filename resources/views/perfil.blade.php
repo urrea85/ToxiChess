@@ -59,9 +59,9 @@
             </script>
             @endisset
 
-            @isset($total)
+            @isset($points)
             <script>
-                document.getElementById("Points").value = '<?php echo $total?>';
+                document.getElementById("Points").value = '<?php echo $points?>';
             </script>
             @endisset
             @isset($message)
