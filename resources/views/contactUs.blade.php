@@ -9,7 +9,8 @@
 
 @section('content')
 <center>
-    <form id="contactForm">
+<h4 class="sent-notification"></h4>
+    <form id="contactForm" >
 
         <label>Nombre</label>
         <input id="name" type="text" placeholder="Enter Name">
@@ -23,7 +24,7 @@
         <p>Mensaje</p>
         <textarea id="body" rows="5" placeholder="Type Message"></textarea>
         <br><br>
-        <button type="button" onclick="sendEmail()" value="Enviar Email"></button>
+        <button type="button" onclick="sendEmail()" value="Enviar Email">Enviar</button>
 
     </form>
 </center>
@@ -31,7 +32,19 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script type="text/javascript">
-    function sendEMail(){
+
+    function isNotEmpty(caller){
+        if(caller.val()==""){
+            caller.css('border', '1px solid red');
+            return false;
+        }
+        else{
+            caller.css('border', '');
+            return true;
+        }
+    }
+
+    function sendEmail(){
         var name = $("#name");
         var email = $("#email");
         var subject = $("#subject");
@@ -54,16 +67,7 @@
             });
         }
     }
-    function isNotEmpty(caller){
-        if(caller.val()==""){
-            caller.css('border', '1px solid red');
-            return false;
-        }
-        else{
-            caller.css('border', '');
-            return true;
-        }
-    }
+    
 
 </script>
 

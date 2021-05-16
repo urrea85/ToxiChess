@@ -1,4 +1,4 @@
-<php>
+<?php>
 use PHPMailer\PHPMailer\PHPMailer;
 
 if(isset($_POST['name'] && isset($_POST['email']))){
@@ -16,15 +16,15 @@ if(isset($_POST['name'] && isset($_POST['email']))){
     $mail->isSMTP();
     $mail->Host = "stmp.gmail.com";
     $mail->SMTPAuth = true;
-    $mail->Username = "nuestroemail@gmail.com";
-    $mail->Password = 'nuestracontraseña';
+    $mail->Username = "sltoxichess@gmail.com";
+    $mail->Password = 'dssmolamucho123';
     $mail->Port = 465;
-    $MAIL->SMTPSecure = "ssl";
+    $mail->SMTPSecure = "ssl";
 
-    $MAIL->isHTML(true);
+    $mail->isHTML(true);
     $mail->setFrom($email, $name);
-    $mail->addAddress("nuestroemail@gmail.com");
-    $mail->SUbject = ("$email ($subject)");
+    $mail->addAddress("sltoxichess@gmail.com");
+    $mail->Subject = ("$email ($subject)");
     $mail->Body = $body;
 
     if($mail->send()){
@@ -38,4 +38,4 @@ if(isset($_POST['name'] && isset($_POST['email']))){
 
     exit(json_encode(array("status" => $status, "response" => $response)));
 }
-</php>
+<?>
