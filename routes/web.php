@@ -75,3 +75,8 @@ Route::post('/register', 'UserController@store');
 //HISTORIAL
 Route::get('/historial', 'GamesController@index');
 Route::delete('/historial', 'GamesController@delete');
+
+//EMAIL
+Route::get('/contactUs', function (){
+    return view('contactUs');
+});
