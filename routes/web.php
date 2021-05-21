@@ -80,3 +80,6 @@ Route::delete('/historial', 'GamesController@delete');
 Route::get('/contactUs', function (){
     return view('contactUs');
 });
+
+// Email related routes
+Route::get('mail/send', 'MailController@send');

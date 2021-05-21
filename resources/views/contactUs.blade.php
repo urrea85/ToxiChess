@@ -8,28 +8,6 @@
 @endsection
 
 @section('content')
-<center>
-<h4 class="sent-notification"></h4>
-    <form id="contactForm" >
-
-        <label>Nombre</label>
-        <input id="name" type="text" placeholder="Enter Name">
-        <br><br>
-        <label>Email</label>
-        <input id="email" type="text" placeholder="Enter Email">
-        <br><br>
-        <label>Asunto</label>
-        <input id="subject" type="text" placeholder="Enter Subject">
-        <br><br>
-        <p>Mensaje</p>
-        <textarea id="body" rows="5" placeholder="Type Message"></textarea>
-        <br><br>
-        <button type="button" onclick="sendEmail()" value="Enviar Email">Enviar</button>
-
-    </form>
-</center>
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <script type="text/javascript">
 
@@ -70,6 +48,31 @@
     
 
 </script>
+
+
+<center>
+<h4 class="sent-notification"></h4>
+    <form id="contactForm" >
+
+        <label>Nombre</label>
+        <input id="name" type="text" placeholder="Enter Name">
+        <br><br>
+        <label>Email</label>
+        <input id="email" type="text" placeholder="Enter Email">
+        <br><br>
+        <label>Asunto</label>
+        <input id="subject" type="text" placeholder="Enter Subject">
+        <br><br>
+        <p>Mensaje</p>
+        <textarea id="body" rows="5" placeholder="Type Message"></textarea>
+        <br><br>
+        <button type="button" onclick="sendEmail()" value="Enviar Email">Enviar</button>
+
+    </form>
+</center>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
 
 
 
