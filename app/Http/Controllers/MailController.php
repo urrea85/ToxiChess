@@ -14,6 +14,7 @@ class MailController extends Controller
             'body' => $request->description,
         ];
         \Mail::to('sltoxichess@gmail.com')->send(new \App\Mail\ContactMail($details));
-        return back();
+        $ok="ok";
+        return view('/contactUs', compact('ok'));
     }
 }

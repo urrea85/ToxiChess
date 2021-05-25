@@ -55,6 +55,13 @@
         </div>
     </div>
     </form>
+
+
+    @isset($ok)
+           <script>
+            alert("Thank you for contacting us!");
+           </script>
+    @endisset
 </div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
