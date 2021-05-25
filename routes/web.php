@@ -78,6 +78,14 @@ Route::post('/register', 'UserController@store');
 //HISTORIAL
 Route::get('/historial', 'GamesController@index');
 Route::delete('/historial', 'GamesController@delete');
+
+//EMAIL
+Route::get('/contactUs', function (){
+    return view('contactUs');
+});
+
+// Email related routes
+Route::get('mail/send', 'MailController@send');
 Auth::routes();
 Route::get('/logout', 'HomeController@index')->name('home');
 Route::get('/logout', 'Auth\LoginController@logout ');
@@ -85,3 +93,5 @@ Route::get('/logout', 'Auth\LoginController@logout ');
 Route::get('/info', function () {
     return view('info');
 });
+
+Route::post('/contactus','MailController@create');

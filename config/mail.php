@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.googlemail.com'),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 465),
 
     /*
     |--------------------------------------------------------------------------
@@ -56,8 +56,13 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'sltoxichess@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'toxichess'),
+    ],
+
+    'to' => [
+        'address' => env('MAIL_FROM_ADDRESS', 'sltoxichess@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'toxichess'),
     ],
 
     /*
@@ -71,7 +76,7 @@ return [
     |
     */
 
-    'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+    'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -84,9 +89,9 @@ return [
     |
     */
 
-    'username' => env('MAIL_USERNAME'),
+    'username' => env('MAIL_USERNAME','sltoxichess@gmail.com'),
 
-    'password' => env('MAIL_PASSWORD'),
+    'password' => env('MAIL_PASSWORD','dssmolamucho123'),
 
     /*
     |--------------------------------------------------------------------------
@@ -133,4 +138,11 @@ return [
 
     'log_channel' => env('MAIL_LOG_CHANNEL'),
 
+
+
+    'ssl' =>[
+        'allow_seld_signed' => true,
+        'verify_peer' => false,
+        'verify,peer_name' => false
+    ]
 ];
