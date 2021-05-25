@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\User;
 use App\Dailypoint;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -19,35 +20,40 @@ class UsersTableSeeder extends Seeder
         $user = new User([
                 'name'=>'pepe',
                 'email'=>'a@b.com',
-                'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
+                'password'=>Hash::make('1234'),
+                'role'=> 'client',
                 'nickname'=>'xXpepeXx']);     
         $user->save();
 
         $user = new User([
             'name'=>'juan',
             'email'=>'b@b.com',
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
+            'password'=>Hash::make('1234'),
+            'role'=> 'client',
             'nickname'=>'juan13']);
         $user->save();
 
         $user = new User([
-            'name'=>'moi',
-            'email'=>'moi@b.com',
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
-            'nickname'=>'byMoiXx']);
+            'name'=>'administrador',
+            'email'=>'admin@admin',
+            'password'=> Hash::make('1234'),
+            'role'=> 'admin',
+            'nickname'=>'admin']);
         $user->save();
 
         $user = new User([
             'name'=>'Joselito',
             'email'=>'Joseli@asd.com',
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
+            'password'=>Hash::make('1234'),
+            'role'=> 'client',
             'nickname'=>'Er_JosEh']);
         $user->save();
         
         $user = new User([
             'name'=>'raul',
             'email'=>'raul123@gmail.com',
-            'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
+            'password'=>Hash::make('1234'),
+            'role'=> 'client',
             'nickname'=>'theraulitoOMG']);
         $user->save();
 
@@ -55,7 +61,8 @@ class UsersTableSeeder extends Seeder
             $user = new User([
                 'name'=>"raul$i",
                 'email'=>"raul$i@gmail.com",
-                'password'=>'$2y$10$92IXUNpkjO0rOQ5byMi',
+                'password'=>Hash::make('1234'),
+                'role'=> 'client',
                 'nickname'=>"theraulitoOMG$i"]);
             $user->save();
         }

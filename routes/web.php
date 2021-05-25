@@ -49,7 +49,10 @@ Route::post('/sendMessage', 'ChatController@sendMessage');
 
 //PROFILE
 
-Route::get('/perfil', 'UserController@firstUser');
+
+Route::get('/perfil', function () {
+    return view('perfil');
+});
 Route::get('/perfil/{id}', 'UserController@delete');
 Route::put('/perfil', 'UserController@update');
 
@@ -83,3 +86,12 @@ Route::get('/contactUs', function (){
 
 // Email related routes
 Route::get('mail/send', 'MailController@send');
+Auth::routes();
+Route::get('/logout', 'HomeController@index')->name('home');
+Route::get('/logout', 'Auth\LoginController@logout ');
+
+Route::get('/info', function () {
+    return view('info');
+});
+
+Route::post('/contactus','MailController@create');

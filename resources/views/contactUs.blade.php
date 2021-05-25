@@ -9,68 +9,53 @@
 
 @section('content')
 
-<script type="text/javascript">
 
-    function isNotEmpty(caller){
-        if(caller.val()==""){
-            caller.css('border', '1px solid red');
-            return false;
-        }
-        else{
-            caller.css('border', '');
-            return true;
-        }
-    }
+<div class="container">
+<form method='POST' action = "{{url('/contactus')}}">
+            @csrf
+    <div class="row justify-content-center" style="margin-top: 10%">
+        <div class="col-md-8">
+            <div class="card" style=" border-color: black;">
+                <div class="card-header" style="background-color: var(--mainColor); border-color: black;">{{ __('Contact Us') }}</div>
 
-    function sendEmail(){
-        var name = $("#name");
-        var email = $("#email");
-        var subject = $("#subject");
-        var body = $("#body");
+                <div class="card-body" style="background: #baadd9;">
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
+                            <div class="col-md-6">
+                                <input id="name" type="text" name="name" placeholder="Enter Name" autofocus required>
+                            </div>
+                        </div>
 
-        if(isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(subject) && isNotEmpty(body)){
-            $.ajax({
-                url: 'sendEmail.php',
-                method: 'POST',
-                dataType: 'json',
-                data:{
-                    name: name.val();
-                    email: email.val();
-                    body: body.val();
-                    subject: subject.val();
-                }, success: function(response){
-                    $('#contactForm')[0].reset();
-                    $('.sent-notification').text("Message sent successfully");
-                }
-            });
-        }
-    }
-    
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
+                            <div class="col-md-6">
+                                <input id="email" type="email" name="email" placeholder="Enter Email" required>
+                            </div>
+                        </div>
 
-</script>
+                        <div class="form-group row">
+                            <label for="subject" class="col-md-4 col-form-label text-md-right">{{ __('Asunto') }}</label>
+                            <div class="col-md-6">
+                            <input id="subject" type="text" name="subject" placeholder="Enter Subject" required> 
+                            </div>
+                        </div>
 
-
-<center>
-<h4 class="sent-notification"></h4>
-    <form id="contactForm" >
-
-        <label>Nombre</label>
-        <input id="name" type="text" placeholder="Enter Name">
-        <br><br>
-        <label>Email</label>
-        <input id="email" type="text" placeholder="Enter Email">
-        <br><br>
-        <label>Asunto</label>
-        <input id="subject" type="text" placeholder="Enter Subject">
-        <br><br>
-        <p>Mensaje</p>
-        <textarea id="body" rows="5" placeholder="Type Message"></textarea>
-        <br><br>
-        <button type="button" onclick="sendEmail()" value="Enviar Email">Enviar</button>
-
+                        <div class="form-group row">
+                            <label for="body" class="col-md-4 col-form-label text-md-right">{{ __('Mensaje') }}</label>
+                            <div class="col-md-6">
+                                <textarea name="description" rows="5" placeholder="Type Message" required></textarea>
+                            </div>
+                            
+                        </div>
+                        <div style="text-align:right; ">
+                        <button style="font-size:23px;" class="icon" type="submit"  value="Enviar Email">Enviar</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </form>
-</center>
-
+</div>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
