@@ -84,6 +84,7 @@
 
     <footer>
         <div style="display:flex; position: fixed; bottom: 2%; right:1%;">
+        <button type="button" class="redes" style="background:green; margin-right:10px" onclick="window.location='{{url('/info')}}'"> <i class="bi bi-info"></i></button>
                 <button type="button" class="redes" style="background:lightskyblue; margin-right:10px" onclick="location.href='https://twitter.com/UA_Universidad'"> <i class="bi bi-twitter"></i></button>
                 <button type="button" class="redes" style="background:orchid" onclick="location.href='https://www.instagram.com/ua_universidad/'"> <i class="bi bi-instagram"></i></button>
         </div>
