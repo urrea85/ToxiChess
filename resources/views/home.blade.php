@@ -61,4 +61,5 @@ var time = {{ $time }} ;
 var fen = "{{ $fen }}" ;
 </script>
 <script src="js/chat.js"></script>
+
 @endsection
