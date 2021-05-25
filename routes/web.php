@@ -49,7 +49,10 @@ Route::post('/sendMessage', 'ChatController@sendMessage');
 
 //PROFILE
 
-Route::get('/perfil', 'UserController@firstUser');
+
+Route::get('/perfil', function () {
+    return view('perfil');
+});
 Route::get('/perfil/{id}', 'UserController@delete');
 Route::put('/perfil', 'UserController@update');
 
@@ -75,3 +78,7 @@ Route::post('/register', 'UserController@store');
 //HISTORIAL
 Route::get('/historial', 'GamesController@index');
 Route::delete('/historial', 'GamesController@delete');
+Auth::routes();
+Route::get('/logout', 'HomeController@index')->name('home');
+Route::get('/logout', 'Auth\LoginController@logout ');
+

@@ -21,10 +21,11 @@ body {
             font-weight: 400;
             font-size: 20px;
             text-align: center;
-            border-color: mediumpurple;
+            border-color: var(--mainColor);
             border-right:0;
             border-left: 0; 
             border-top: 0;
+            border-bottom: 0;
             box-shadow: 0 0 40px 40px var(--mainColor) inset, 0 0 0 0 var(--mainColor);
             -webkit-transition: all 150ms ease-in-out;
             transition: all 150ms ease-in-out;
@@ -32,7 +33,7 @@ body {
 
 .horizontal-menu-2:hover {
         background-color: #604c8a;
-        box-shadow: 0 0 10px 0 mediumpurple inset, 0 0 10px 4px mediumpurple;
+        box-shadow: 0 0 10px 0 var(--mainColor) inset, 0 0 10px 4px mediumpurple;
 }
 
 
@@ -44,7 +45,7 @@ body {
     vertical-align: middle;
     border-top: 0;
     border-right: 2px solid var(--mainColor);   
-    border-bottom: 2px solid #6C3783;
+    border-bottom: 2px solid var(--mainColor);
     border-left: 0;
     -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
     box-shadow: 0 0 40px 40px var(--mainColor) inset, 0 0 0 0 var(--mainColor);
@@ -62,7 +63,7 @@ body {
     vertical-align: middle;
     border-top: 0;
     border-right: 2px solid var(--mainColor);   
-    border-bottom: 2px solid #6C3783;
+    border-bottom: 2px solid var(--mainColor);
     border-left: 0;
     box-shadow: 0 0 40px 40px var(--mainColor) inset, 0 0 0 0 var(--mainColor);
     -webkit-transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
@@ -97,7 +98,7 @@ html{
     background-color: var(--mainColor);
     border-top: 0;
     border-right: 2px solid var(--mainColor);   
-    border-bottom: 2px solid #6C3783;
+    border-bottom: 2px solid var(--mainColor);
     border-left: 0;
 }
 
