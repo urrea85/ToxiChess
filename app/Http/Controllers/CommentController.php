@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Comment;
 use App\Game;
-
+use Illuminate\Support\Facades\Log;
 class CommentController extends Controller
 {
 
@@ -41,6 +41,8 @@ class CommentController extends Controller
             $message = "Error: Comentario no existe";
             return back()->with('message', $message);
         }else{
+            $input = 'content'.$id;
+            Log::debug($request->old($input));
             Comment::where('id', $id)->update(array(
                 'content'=>$content,
             ));
@@ -49,15 +51,16 @@ class CommentController extends Controller
         }
     }
 
-    public function delete(Request $request){
-        $existe = Comment::where('id',$request->input('id') );
+    public function delete(Request $request,$id){
+        $existe = Comment::where('id',$id);
         if(!$existe->exists()){
             $message = "Error: Comentario no existe";
             return back()->with('message', $message);
         }
         else{
             $existe->delete();
-            return back();
+            $message = "Borrado con éxito";
+            return back()->with('message', $message);
         }
     }
 }

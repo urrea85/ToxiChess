@@ -17,7 +17,7 @@ class CreateGamesTable extends Migration
             $table->bigIncrements('id');
             $table->text('moves')->nullable(true);
             $table->timestamp('start')->useCurrent();
-            $table->timestamp('end')->nullable(true);
+            $table->timestamp('end')->useCurrent();
             $table->timestamps();
         });
     }

@@ -66,18 +66,18 @@ Route::get('/panelAdmin/users/all',  function () {
     return redirect('/panelAdmin/users/all/0');
 });
 Route::get('/panelAdmin/comments', 'CommentController@index');
-Route::delete('/panelAdmin/comments', 'CommentController@delete');
+Route::post('/panelAdmin/comments/{id}', 'CommentController@delete');
 Route::get('/panelAdmin/comments/{attribute}/{value}', 'CommentController@show');
 Route::get('/panelAdmin/comments/all',  function () {
     return redirect('/panelAdmin/comments/all/0');
 });
-Route::get('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');
+Route::post('/panelAdmin/comments/update/{id}/{content}', 'CommentController@update');
 Route::post('/register', 'UserController@store');
 
 
 //HISTORIAL
 Route::get('/historial', 'GamesController@index');
-Route::delete('/historial', 'GamesController@delete');
+Route::delete('/historial/{id}', 'GamesController@delete');
 
 //EMAIL
 Route::get('/contactUs', function (){
