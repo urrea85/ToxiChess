@@ -5,7 +5,7 @@
 
 
 <link rel="stylesheet" href="css/perfil.css">
-
+<script src="js/app.js"></script>
 
 
 
@@ -24,17 +24,22 @@
             <table class="table table-hover" id="data-table">
             <thead>
                 <tr>
-                    <th>Id</th><th>Date</th><th>Content</th><th>User ID</th><th>Action</th>
+                    <th>Id</th>
+                    <th>Date</th>
+                    <th>Content</th>
+                    <th>User ID</th>
+                    @auth
+                        @if (Auth::user()->role == 'admin')
+                        <th>Action</th>
+                        @endif
+                    @endauth
                 </tr>
             </thead>
             <tbody>
             <script>
 
                 function actualiza(){
-                    $form = document.getElementById('form');
-                    form.action += '/';
-                    form.action += document.getElementById('content2');
-                    form.submit()
+                    
                 }
             </script>
 
@@ -47,11 +52,15 @@
                         <td>{{$comment->date}}</td>
                         <td><input id="content<?php echo $comment->id?>" type="text" value="{{$comment->content}}"></td>
                         <td>{{$comment->user_id}}</td>
-                        <td>
-                            <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
-                            
-                            <button type="button"  formaction="<?php echo '/panelAdmin/comments/update/'.$comment->id?>" onclick="actualiza()"> <i class="bi bi-pencil-fill" ></i></button>
-                        </td>
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                                    <td>
+                                        <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
+                                        
+                                        <button type="button" onclick="axios.post('updateComment',{id : {{$comment->id}}, content : document.getElementById('content'+'{{$comment->id}}').value}).then(function(response){alert(response.data)}); console.log('moi');"> <i class="bi bi-pencil-fill" ></i></button>
+                                    </td>
+                            @endif
+                        @endauth
                     </tr>
                 </form>
                 @endforeach

@@ -24,7 +24,11 @@
               <th>Result</th>
               <th>Start</th>
               <th>End</th>
-              <th>Action</th>
+              @auth
+                @if (Auth::user()->role == 'admin')
+                  <th>Action</th>
+                @endif
+              @endauth
             </tr>
           </thead>
           <tbody>
@@ -39,9 +43,13 @@
                       <td>{{$game->result}}</td>
                       <td>{{$game->start}}</td>
                       <td>{{$game->end}}</td>
-                      <td>
-                          <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
-                      </td>
+                      @auth
+                        @if (Auth::user()->role == 'admin')
+                        <td>
+                            <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
+                        </td>
+                        @endif
+                      @endauth
                       </tr>
                   </form>
             @endforeach
