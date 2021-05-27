@@ -13,44 +13,51 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 
-<div class="div1">
-@isset($games)
-    <div class="div2" style="margin-top:20px;">
-            <table cellspacing="10" cellpadding="5" style="padding: 0 30px"><tr>
-            <th>Id</th><th>Result</th><th>Start</th><th>End</th>
+<center style="margin-top:2%">
+    @isset($games)
+    <div class="col-md-8">
+        <h3 class="text-center text-info" style="color: black !important">Historial</h3>
+        <table class="table table-hover" id="data-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Result</th>
+              <th>Start</th>
+              <th>End</th>
+              <th>Action</th>
             </tr>
-
+          </thead>
+          <tbody>
             @foreach ($games as $game)
+               
+                <form method='POST' action = "<?php echo '/historial/'.$game->id?>">
+                @csrf
+                  @method('DELETE')
                 <tr>
-                <td>{{$game->id}}</td>
-                <td>{{$game->result}}</td>
-                <td>{{$game->start}}</td>
-                <td>{{$game->end}}</td>
-                </tr>
+                      {{--<td><input id="id" type="text" value="{{$game->id}}"></td>--}}
+                      <td>{{$game->id}}</td>
+                      <td>{{$game->result}}</td>
+                      <td>{{$game->start}}</td>
+                      <td>{{$game->end}}</td>
+                      <td>
+                          <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
+                      </td>
+                      </tr>
+                  </form>
             @endforeach
+          </tbody>
+        </table>
 
-            </table>
-
-            <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
+        <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
                 <?php echo $games->render() ;?>
-            </div>
-            <form method='POST' action = "{{url('/historial')}}">
-            @csrf
-            @method('DELETE')
-            <div style="padding: 10px 0px">
-                <label class="rectangle-7">ID</label>  <input  class="" type="number" id="idGame" name="idGame"/> 
-            </div style="padding: 10px 0px">
-            <div style="padding: 10px 0px">
-                <input type="submit" class="iconOff" style=" font-size: 21px; color:black" value="Eliminar"></i></input>  
-            </div style="padding: 10px 0px">
-
-            @if (session()->has('message'))
-                    <p style="text-align:center; color: red; text-size: 15px;">{{session('message')}}</p>
-            @endif
-        </form>
-
-    </div>
-
-@endisset
-</div>
+        </div>
+        @if (session()->has('message'))
+          <script>
+                alert("<?php echo session('message')?>");
+          </script>
+        @endif
+      </div>
+      @endisset
+      </div>
+</center>
 @endsection

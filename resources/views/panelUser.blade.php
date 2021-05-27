@@ -2,7 +2,7 @@
 
 
 @section('panel')
-<div class="div">
+<center style="margin-top:2%">
 <select id="mySelect">
             <option value="id">Id</option>
             <option value="name">Name</option>
@@ -14,27 +14,39 @@
         <input class="input" id="myInput" type="text" required>
         <button type="button" class="icon" id="search" onclick="filtrarUsuarios()"> <i class="bi bi-search" ></i></button>
     @isset($users)
-    <div>
-        <br>
-    <div class="div2">
-            <table cellspacing="10" cellpadding="5" style="padding: 0 30px"><tr>
-            <th>Id</th><th>Name</th><th>Nickname</th><th>Email</th><th>Total Games</th>
+    <div class="col-md-8" style="margin-top:2%">
+        <table class="table table-hover" id="data-table">
+          <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Nickname</th>
+                <th>Email</th>
+                <th>Total Games</th>
             </tr>
-
-            @foreach ($users as $user)
+          </thead>
+          <tbody>
+          @foreach ($users as $user)
+               
                 <tr>
-                <td>{{$user->id}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->nickname}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->total_games}}</td>
+                    {{--<td><input id="id" type="text" value="{{$game->id}}"></td>--}}
+                    <td>{{$user->id}}</td>
+                    <td>{{$user->name}}</td>
+                    <td>{{$user->nickname}}</td>
+                    <td>{{$user->email}}</td>
+                    <td>{{$user->total_games}}</td>
                 </tr>
             @endforeach
+          </tbody>
+        </table>
 
-            </table>
-    </div>
-    <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
-        <?php echo $users->render() ;?>
-    </div>
-    @endisset
+        <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
+                <?php echo $users->render() ;?>
+        </div>
+      </div>
+      @endisset
+      </div>
+</center>
+
+
 @endsection

@@ -2,27 +2,14 @@
 
 @section('panel')
 
-<script>
-       function actualizarComentarios()
-        {
-            var input = document.getElementById("idMessage").value;
-            var select = document.getElementById("content").value;
-            if (input == "" || select == ""){
-                alert("Debes llenar el campo")
-                return false;
-            }else {
-                if((input=="id") && !Number.isInteger(parseInt(input))){
-                    alert("Introduzca un número")
-                    return false;
-                }
-                    window.location="/panelAdmin/comments/update/"+input +"/" + select;
 
-            }
-        }
-</script>
 
 <link rel="stylesheet" href="css/perfil.css">
-<div class="div">
+
+
+
+
+<center>
     <select id="mySelect">
                 <option value="id">Id</option>
                 <option value="content">Content</option>
@@ -32,28 +19,51 @@
             <input class="input" id="myInput" type="text" required>
             <button type="button" class="icon" id="search" onclick="filtrarComentarios()"> <i class="bi bi-search" ></i></button>
         @isset($comments)
-        <div>
-            <br>
-        <div class="div2">
-                <table cellspacing="10" cellpadding="5" style="padding: 0 30px"><tr>
-                <th>Id</th><th>Date</th><th>Content</th><th>User ID</th>
+ 
+        <div class="col-md-8" style="margin-top:2%">
+            <table class="table table-hover" id="data-table">
+            <thead>
+                <tr>
+                    <th>Id</th><th>Date</th><th>Content</th><th>User ID</th><th>Action</th>
                 </tr>
-                @foreach ($comments as $comment)
+            </thead>
+            <tbody>
+            @foreach ($comments as $comment)
+            <form method='POST' action = "<?php echo '/panelAdmin/comments/'.$comment->id?>">
+                @csrf
                     <tr>
-                    <td>{{$comment->id}}</td>
-                    <td>{{$comment->date}}</td>
-                    <td>{{$comment->content}}</td>
-                    <td>{{$comment->user_id}}</td>
+                        {{--<td><input id="id" type="text" value="{{$game->id}}"></td>--}}
+                        <td>{{$comment->id}}</td>
+                        <td>{{$comment->date}}</td>
+                        <td><input id="content<?php echo $comment->id?>" type="text" value="{{$comment->content}}"></td>
+                        <td>{{$comment->user_id}}</td>
+                        <td>
+                            <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
+                            <button type="submit" formaction="<?php echo '/panelAdmin/comments/update/'.$comment->id?>" onclick="return confirm('Do you want edit this record?'); "> <i class="bi bi-pencil-fill" ></i></button>
+                        </td>
                     </tr>
+                </form>
                 @endforeach
+            </tbody>
+            </table>
 
-                </table>
-        </div>
-        <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
-            <?php echo $comments->render() ;?>
-        </div>
+            <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
+                    <?php echo $comments->render() ;?>
+            </div>
 
-        <form method='POST' action = "{{url('/panelAdmin/comments')}}">
+            @if (session()->has('message'))
+                <script>
+                        alert("<?php echo session('message')?>");
+                </script>
+                @endif
+            </div>
+      @endisset
+
+</center>
+
+
+       {{--
+       <form method='POST' action = "{{url('/panelAdmin/comments')}}">
             @csrf
             @method('DELETE')
             <div style="padding: 10px 0px">
@@ -71,6 +81,7 @@
                     <p style="text-align:center; color: red; text-size: 15px;">{{session('message')}}</p>
             @endif
         </form>
-  
         @endisset
+        --}} 
+       
 @endsection
