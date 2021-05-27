@@ -65,17 +65,16 @@ class UserController extends Controller
         }
         return view('panelUser', compact('users'));
     }
-
     public function firstUser(Request $request){
-        $user = User::first();
-        $points= DB::table('users')->where("user_id", "=", $user->id)
+        $user = Auth::user()->id;
+        $points= DB::table('users')->where("user_id", "=", $user)
         ->join('dailypoints', 'user_id', '=', 'users.id')
         ->groupBy('users.id')
         ->get([
             DB::raw('sum(dailypoints.points) as points')
         ])->first()->points; 
         Log::debug($points);
-        return view('perfil', compact('user','points'));
+        return view('perfil', compact('points'));
     }
 
     public function delete(Request $request, $id){

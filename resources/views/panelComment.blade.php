@@ -28,8 +28,18 @@
                 </tr>
             </thead>
             <tbody>
+            <script>
+
+                function actualiza(){
+                    $form = document.getElementById('form');
+                    form.action += '/';
+                    form.action += document.getElementById('content2');
+                    form.submit()
+                }
+            </script>
+
             @foreach ($comments as $comment)
-            <form method='POST' action = "<?php echo '/panelAdmin/comments/'.$comment->id?>">
+            <form id="form" method='POST' action = "<?php echo '/panelAdmin/comments/'.$comment->id?>">
                 @csrf
                     <tr>
                         {{--<td><input id="id" type="text" value="{{$game->id}}"></td>--}}
@@ -39,7 +49,8 @@
                         <td>{{$comment->user_id}}</td>
                         <td>
                             <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
-                            <button type="submit" formaction="<?php echo '/panelAdmin/comments/update/'.$comment->id?>" onclick="return confirm('Do you want edit this record?'); "> <i class="bi bi-pencil-fill" ></i></button>
+                            
+                            <button type="button"  formaction="<?php echo '/panelAdmin/comments/update/'.$comment->id?>" onclick="actualiza()"> <i class="bi bi-pencil-fill" ></i></button>
                         </td>
                     </tr>
                 </form>

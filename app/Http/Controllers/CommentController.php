@@ -34,7 +34,7 @@ class CommentController extends Controller
         return view('panelComment', compact('comments'));
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id, $content){
 
         $existe = Comment::where('id',$id);
         if(!$existe->exists()){
@@ -42,9 +42,9 @@ class CommentController extends Controller
             return back()->with('message', $message);
         }else{
             $input = 'content'.$id;
-            Log::debug($request->input($input));
+            Log::debug($request->old($input));
             Comment::where('id', $id)->update(array(
-                'content'=>$request->input($input),
+                'content'=>$content,
             ));
 
             return redirect('/panelAdmin/comments/id/'.$id);
