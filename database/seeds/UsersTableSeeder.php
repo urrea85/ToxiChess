@@ -36,7 +36,7 @@ class UsersTableSeeder extends Seeder
         $user = new User([
             'name'=>'administrador',
             'email'=>'admin@admin',
-            'password'=> Hash::make('1234'),
+            'password'=> Hash::make('admin'),
             'role'=> 'admin',
             'nickname'=>'admin']);
         $user->save();

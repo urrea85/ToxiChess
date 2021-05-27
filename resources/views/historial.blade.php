@@ -16,7 +16,6 @@
 <center style="margin-top:2%">
     @isset($games)
     <div class="col-md-8">
-        <h3 class="text-center text-info" style="color: black !important">Historial</h3>
         <table class="table table-hover" id="data-table">
           <thead>
             <tr>
