@@ -24,6 +24,6 @@ class ChatController extends Controller
         $comment->user()->associate(User::all()->random());
         $comment->game()->associate(Game::all()->random());
         $comment->save();
-        broadcast(new NewMessage($request->message,$request->side));
+        broadcast(new NewMessage(Auth()->user()->name.": ".$request->message,$request->side));
     }
 }
