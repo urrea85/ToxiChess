@@ -16,7 +16,7 @@ crossorigin="anonymous"></script>
         </ul>
         <form id="form-w" class="chat-form" action="">
             <input id="message-w" style="flex:1;width:0"" class="" autocomplete="off" />
-            <input type="submit"  value="Submit" />
+            <input type="submit"  value="Submit" @unless(Auth::check()) disabled @endunless>
         </form>
     </div>
     <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center; flex-direction: column">
@@ -25,16 +25,10 @@ crossorigin="anonymous"></script>
     </div>
     <div id="chat-container-b" class="chat-container">
         <ul id="messages-b" class="messages">
-            @for ($i = 0; $i<20; $i++)
-                <li> TestMessage{{$i}} </li>
-            @endfor
-            <li>SomeUser69: Yeah, I would've went for d4 but e5 is also fine...</li>
-            <li>xXbyKasparovXx: What u saying bro? d4 would've been shity, Kd4 and we lose a piece after...</li>
-            <li>SomeUser69: We could've checked with queen and we would have enough time to move the bishop away</li>
         </ul>
         <form id="form-b" class="chat-form" action="">
             <input id="message-b" style="flex:1;width:0" autocomplete="off" />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" @unless(Auth::check()) disabled @endunless/>
         </form>
     </div>
 </div>
