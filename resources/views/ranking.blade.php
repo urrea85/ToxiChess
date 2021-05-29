@@ -4,16 +4,13 @@
 
     @section('sidebar')
         @parent
-
-        <p>This is appended to the master sidebar.</p>
+        <p></p>
     @endsection
 
     @section('content')
 
-
     <link rel="stylesheet" href="css/panelAdmin.css">
     <link rel="stylesheet" href="css/perfil.css">
-    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
 
@@ -30,65 +27,89 @@
     </form>
 
     </div>
-    @isset($users)
     
-    
-
-    <div class="div2">
-        <table cellspacing="5" style="margin-top:10px; padding:10px 20px; border-collapse:inherit"><tr>
-
-        @if($raw)
-        <th>Id</th>
-        @endif
-        <th style="padding:0px 25px">Nickname</th><th style="padding:0px 25px">Score</th>
+    <center style="margin-top:2%">
+        @isset($users)
         
-        @if($raw)
-        <th>Fecha</th>
-        @endif
+        
 
-        </tr>
+        <div class="col-md-8">
+            <table class="table table-hover" id="data-table">
+                <thead>
+                    <tr>
 
-        @foreach ($users as $user)
+                    
+                        @if($raw)
+                            <td>Id</td>
+                        @endif
+                        <th style="padding:0px 25px">Nickname</th><th style="padding:0px 25px">Score</th>
+                        
+                        @if($raw)
+                        <th>Fecha</th>
+                        @endif
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                                @if($raw)
+                                <th></th>
+                                @endif
+                            @endif
+                        @endauth
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach ($users as $user)
+                    
+                        @if($raw)
+                            <td>{{$user->id}}</td>
+                        @endif
+
+                        <td>{{$user->nickname}}</td>
+                        <td>{{$user->points}}</td>
+
+                        @if($raw)
+                            <th>{{$user->updated_at}}</th>
+                        @endif
+
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                                @if($raw)
+                                    <form method='POST' action = "<?php echo '/ranking/raw/'.$user->id?>">
+                                    @csrf
+                                    @method('DELETE')
+                                        <td>
+                                            <button type="submit" onclick="return confirm('Do you want delete this record?'); "> <i class="bi bi-trash-fill" ></i></button>
+                                        </td>
+                                    </form>
+                                @endif
+                            @endif
+                        @endauth
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+
             @if($raw)
-            <th>{{$user->id}}</th>
-            @endif
-            <td>{{$user->nickname}}</td>
-            <td>{{$user->points}}</td>
-
-            @if($raw)
-            <th>{{$user->updated_at}}</th>
             @endif
 
-            </tr>
-        @endforeach
-
-        </table>
+        </div>
+        
 
 
-        @if($raw)
-        <form method='POST' action = "{{url('/ranking/raw')}}">
-            @csrf
-            @method('DELETE')
-            <div style="padding: 10px 0px">
-                <label class="rectangle-7">ID</label>
-                <input  class="" type="number" id="idPoints" name="id"/> 
-            </div style="padding: 10px 0px">
-            <div style="padding: 10px 0px">
-                <input type="submit" class="iconOff" style=" font-size: 21px; color:black" value="Eliminar"></i></input>  
-            </div style="padding: 10px 0px">
+        <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
+            <?php echo $users->render(); ?>
+        </div>
 
-            @if (session()->has('message'))
-                    <p style="text-align:center; color: red; text-size: 15px;">{{session('message')}}</p>
-            @endif
-        </form>
+        @if (session()->has('message'))
+          <script>
+                alert("<?php echo session('message')?>");
+          </script>
         @endif
-
-    </div>
-    <div class="flex-centerbox" style="flex-direction: row; padding-top: 20px">
-        <?php echo $users->render(); ?>
-    </div>
+      </div>
 
 
-    @endisset
-
+        @endisset
+    </center>
     @endsection

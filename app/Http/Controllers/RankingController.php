@@ -14,32 +14,33 @@ class RankingController extends Controller
         switch($attr){
             case "total":
                 $raw = false;
-                $users = User::join('dailypoints', 'user_id', '=', 'users.id')->selectRaw('nickname')->selectRaw("SUM(points) as points")->groupBy('user_id')->orderBy('points', 'desc')->simplePaginate();
+                $users = User::join('dailypoints', 'user_id', '=', 'users.id')->selectRaw('nickname')->selectRaw("SUM(points) as points")->groupBy('user_id')->orderBy('points', 'desc')->Paginate();
                 break;
             case "mensual":
                 $raw = false;
                 $date = now()->format("Y-m").'-01';
-                $users = User::join('dailypoints', 'user_id', '=', 'users.id')->whereDate('dailypoints.created_at','>=', $date)->selectRaw('nickname')->selectRaw("SUM(points) as points")->groupBy('user_id')->orderBy('points', 'desc')->simplePaginate();
+                $users = User::join('dailypoints', 'user_id', '=', 'users.id')->whereDate('dailypoints.created_at','>=', $date)->selectRaw('nickname')->selectRaw("SUM(points) as points")->groupBy('user_id')->orderBy('points', 'desc')->Paginate();
                 break;
             case "raw":
                 $raw = true;
-                $users = User::join('dailypoints', 'user_id', '=', 'users.id')->orderBy('points', 'desc')->simplePaginate();
+                $users = User::join('dailypoints', 'user_id', '=', 'users.id')->orderBy('points', 'desc')->Paginate();
                 break;
         }
         
         return view('/ranking', compact('users'))->with('raw', $raw);
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request, $attr){
         
-        $existe = Dailypoint::where('id',$request->input('id'));
+        $existe = Dailypoint::where('id',$attr);
         if(!$existe->exists()){
             $message = "Error: Id de puntos no existe";
             return back()->with('message', $message);
         }
         else{
             $existe->delete();
-            return back();
+            $message = "Borrado con éxito";
+            return back()->with('message', $message);
         }
     }
 }

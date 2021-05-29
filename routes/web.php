@@ -32,7 +32,7 @@ Route::get('/masterpage', function () {
 //RANKING
 Route::get('/ranking/{attr}', 'RankingController@form');
 Route::middleware('admin')->group(function(){
-    Route::delete('/ranking/raw', 'RankingController@delete');
+    Route::delete('/ranking/raw/{id}', 'RankingController@delete');
 });
 Route::get('/ranking', function () {
     return view('ranking');
