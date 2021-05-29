@@ -15,19 +15,19 @@ crossorigin="anonymous"></script>
         <ul id="messages-w" class="messages">
         </ul>
         <form id="form-w" class="chat-form" action="">
-            <input id="message-w" style="flex:1;width:0"" class="" autocomplete="off" />
+            <input id="message-w" style="flex:1;width:0"" class="" autocomplete="off" @unless(Auth::check()) onclick="alert('Necesitas estar registrado para enviar mensajes')" @endunless/>
             <input type="submit"  value="Submit" @unless(Auth::check()) disabled @endunless>
         </form>
     </div>
     <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center; flex-direction: column">
-        <div id="myBoard" style="width:80%"></div>
+        <div id="myBoard" style="width:80%" @unless(Auth::check()) onclick="alert('Necesitas estar registrado para votar')" @endunless></div>
         <div id="timer">00 S</div>
     </div>
     <div id="chat-container-b" class="chat-container">
         <ul id="messages-b" class="messages">
         </ul>
         <form id="form-b" class="chat-form" action="">
-            <input id="message-b" style="flex:1;width:0" autocomplete="off" />
+            <input id="message-b" style="flex:1;width:0" autocomplete="off" @unless(Auth::check()) onclick="alert('Necesitas estar registrado para enviar mensajes')" @endunless/>
             <input type="submit" value="Submit" @unless(Auth::check()) disabled @endunless/>
         </form>
     </div>
