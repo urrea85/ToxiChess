@@ -37,7 +37,7 @@
                 <label class="rectangle-7">Total games</label> <input  type="" id="Total games" name="Total games" readonly="readonly" value="{{ Auth::user()->total_games }}"/>
             </div>
             <div style="padding: 10px 0px"> 
-                <label class="rectangle-7">Points</label>      <input type="" id="Points" name="Points" readonly="readonly"/> 
+                <label class="rectangle-7">Points</label>      <input type="" id="Points" name="Points" readonly="readonly" value="{{ DB::table('users')->where("user_id", "=", Auth::user()->id)->join('dailypoints', 'user_id', '=', 'users.id')->groupBy('users.id')->get([DB::raw('sum(dailypoints.points) as points')])->first()->points }}"/> 
             </div>
             <div style="padding: 10px 0px">
                 <input style="font-size:23px; color:black;" type="submit" value="Actualizar Datos" class="icon" style="color:black"></i></input>  
@@ -47,6 +47,8 @@
 
             @isset($points)
             <script>
+                console.log("hello");
+                console.log({{$points}});
                 document.getElementById("Points").value = '<?php echo $points?>';
             </script>
             @endisset
