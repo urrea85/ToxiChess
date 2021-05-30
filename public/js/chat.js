@@ -97,9 +97,29 @@ var game = new Chess()
 game.load(fen);
 var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
+var yellow = '#c7c53c'
+var vote = null
+
+function setVote(square){
+  if (vote!=null){
+    $('#myBoard .square-' + vote).css('background', '')
+  }
+  vote = square
+  $('#myBoard .square-' + vote).css('background', yellow)
+}
+
+function clearVote(){
+  if (vote!=null){
+    $('#myBoard .square-' + vote).css('background', '')
+    vote = null
+  }
+}
 
 function removeGreySquares () {
   $('#myBoard .square-55d63').css('background', '')
+  if (vote!=null){
+    $('#myBoard .square-' + vote).css('background', yellow)
+  }
 }
 
 function greySquare (square) {
@@ -132,6 +152,7 @@ function onDrop (source, target) {
   // see if the move is legal
   var nmove = source + '-' + target;
   if (isMoveLegal(nmove)){
+    setVote(target);
     axios.post("vote",{move:nmove, side:game.turn()==='w'});
   }
   else{
@@ -190,7 +211,8 @@ Echo.channel('chess')
       if (!e.repeat){
         console.log("does");
         game.move(e.move,{sloppy:true})
-        board.position(game.fen());
+        board.position(game.fen())
+        clearVote()
       }
       else{
         console.log("repeat");
