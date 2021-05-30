@@ -8,18 +8,18 @@
 @endsection
 
 @section('content')
-<script>
-    function borrarUsuario(){
-        x = document.getElementById("Id").value;
-        window.location="perfil/"+x;
-    }
-</script>
+
 <link rel="stylesheet" href="css/perfil.css">
 
 @auth
+<script>
+    function borrarUsuario(){
+        window.location="perfil/{{Auth::user()->id}}";
+    }
+</script>
 <div class="flex-centerbox">
     <div class="form">
-        <form method='POST' action = "{{url('/perfil')}}"class="form2">
+        <form method='POST' action = "<?php echo '/perfil/'.Auth::user()->id?>" class="form2">
             @csrf
             
             @method('PUT')
@@ -56,11 +56,11 @@
                 document.getElementById("Points").value = '<?php echo $points?>';
             </script>
             @endisset
-            @isset($message)
-            <p style="text-align: center;">
-                {{$message}}
-            </p>
-            @endisset
+            @if (session()->has('message'))
+            <script>
+                    alert("<?php echo session('message')?>");
+            </script>
+            @endif
             
         </form>
     </div>

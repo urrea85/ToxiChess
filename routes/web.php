@@ -56,7 +56,7 @@ Route::middleware('auth')->group(function(){  //TE ENVIA A LOGIN
         return view('perfil');
     });
     Route::get('/perfil/{id}', 'UserController@delete');
-    Route::put('/perfil', 'UserController@update');
+    Route::put('/perfil/{id}', 'UserController@update');
 });
 
 //PANEL ADMINISTRATOR

@@ -84,14 +84,15 @@ class UserController extends Controller
             return back()->with('message', $message);
         }
         else{
+            $message = "Borrado correctamente";
             $existe->delete();
-            return view('perfil');
+            return back()->with('message', $message);
         }
     }
 
-    public function update(Request $request){
-        $update = User::where('id',$request->input('Id') );
-        $existe = User::find($request->input('Id') );
+    public function update(Request $request, $id){
+        $update = User::where('id',$id );
+        $existe = User::find($id );
         if(!$existe->exists()){
             $message = "Usuario no existe";
             return view('perfil', compact('message'));
@@ -99,20 +100,19 @@ class UserController extends Controller
         else{
             if (User::where('nickname',$request->input('Nickname'))->exists() && $existe->nickname!=$request->input('Nickname')) {
                 $message="Error: nickname already exists!";
-                return view('perfil', compact('message'));
+                return back()->with('message', $message);
             }else{
                 if (User::where('email',$request->input('Email'))->exists() && $existe->email!=$request->input('Email')) {
                     $message="Error: email already exists!";
-                    return view('perfil', compact('message'));
+                    return back()->with('message', $message);
                 }else{
                     $update->update(array(
                         'nickname'=>$request->input('Nickname'),
                         'name'=>$request->input('Name'),
                         'email'=>$request->input('Email'),
-                        'password'=>$request->input('Password')
                     ));
                     $message="Actualizado correctamente";
-                    return view('perfil', compact('message'));
+                    return back()->with('message', $message);
                 }
             } 
         }
