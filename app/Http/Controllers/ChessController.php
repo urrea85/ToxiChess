@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ChessController extends Controller
 {
-    const turnTime = 5.0;
+    const turnTime = 15.0;
     public $state = null;
     public $chess = null;
 

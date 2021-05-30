@@ -57,7 +57,7 @@ class UsersTableSeeder extends Seeder
             'nickname'=>'theraulitoOMG']);
         $user->save();
 
-        for($i = 0; $i<100; $i++){
+        for($i = 0; $i<10; $i++){
             $user = new User([
                 'name'=>"raul$i",
                 'email'=>"raul$i@gmail.com",

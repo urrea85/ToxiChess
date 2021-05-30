@@ -21,7 +21,12 @@ crossorigin="anonymous"></script>
     </div>
     <div style=" flex:9 ; margin: 50px 0px ; display:flex; align-items:center; justify-content:center; flex-direction: column">
         <div id="myBoard" style="width:80%" @unless(Auth::check()) onclick="alert('Necesitas estar registrado para votar')" @endunless></div>
-        <div id="timer">00 S</div>
+        <div class="d-flex">
+          <span id="timer">00 S</span>
+          <span id="timer" class="d-flex" style="font-size:24px; margin-left:10px; text-align:center; flex-direction:column; justify-content:center" >
+            <div id="moveVoted">You have voted: N/A</div>
+          </span>
+        </div>
     </div>
     <div id="chat-container-b" class="chat-container">
         <ul id="messages-b" class="messages">
@@ -53,6 +58,7 @@ crossorigin="anonymous"></script>
 <script>
 var time = {{ $time }} ;
 var fen = "{{ $fen }}" ;
+var auth = {{ Auth::check() ? 'true' : 'false' }};
 </script>
 <script src="js/chat.js"></script>
 
