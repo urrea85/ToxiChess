@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 class GamesController extends Controller
 {
     public function index(){
-        $games = Game::paginate();
+        $games = Game::orderBy('id','desc')->paginate();
         return view('historial', compact('games'));
     }
 

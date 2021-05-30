@@ -15,6 +15,7 @@ class ForeignKeyVoteTable extends Migration
     {
         Schema::table('votes', function (Blueprint $table) {
             $table->foreign('state_id')->references('id')->on('states')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -27,6 +28,7 @@ class ForeignKeyVoteTable extends Migration
     {
         Schema::table('votes', function (Blueprint $table) {
             $table->dropForeign('votes_state_id_foreign');
+            $table->dropForeign('votes_user_id_foreign');
         });
     }
 }

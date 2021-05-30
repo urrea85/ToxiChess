@@ -77,13 +77,15 @@ function isMoveLegal(move){
   return true;
 }
 
+var updating = false
+
 function setTimer(){
     actualTime = time - (Date.now()/1000.0 - startTime);
-    if (actualTime<=0.0){
+    if (actualTime<=0.0 && !updating){
       actualTime = 0.0;
-      axios.post("updateChess");
+      axios.post("updateChess")
     } 
-    document.getElementById("timer").innerHTML = actualTime.toFixed(1) + " S";
+    document.getElementById("timer").innerHTML = actualTime.toFixed(1).toString().padStart(4,'0') + " S";
 }
 
 setInterval(setTimer,100);
@@ -97,6 +99,7 @@ var whiteSquareGrey = '#a9a9a9'
 var blackSquareGrey = '#696969'
 var yellow = '#c7c53c'
 var vote = null
+var moveVoted = null
 
 function setVote(square){
   if (vote!=null){
@@ -104,6 +107,15 @@ function setVote(square){
   }
   vote = square
   $('#myBoard .square-' + vote).css('background', yellow)
+}
+
+function setMoveVoted(vote){
+  moveVoted = vote
+  if (moveVoted==null){
+    document.getElementById("moveVoted").textContent = "You have voted: N/A"
+    return
+  }
+  document.getElementById("moveVoted").textContent = "You have voted: " + moveVoted
 }
 
 function clearVote(){
@@ -144,14 +156,17 @@ function onDragStart (source, piece) {
 
 function onDrop (source, target) {
   removeGreySquares()
-  console.log(source);
-  console.log(target);
 
+  if (!auth){
+    alert("Necesitas estar registrado para votar")
+    return;
+  }
   // see if the move is legal
   var nmove = source + '-' + target;
   if (isMoveLegal(nmove)){
     setVote(target);
-    axios.post("vote",{move:nmove});
+    setMoveVoted(nmove)
+    axios.post("vote",{move:nmove, side:game.turn()==='w'});
   }
   else{
     console.log("wait, that's illegal!");
@@ -206,6 +221,7 @@ Echo.channel('chess')
     .listen('MakeMove', (e) => {
       console.log(e.move)
       console.log("a");
+      setMoveVoted(null)
       if (!e.repeat){
         console.log("does");
         game.move(e.move,{sloppy:true})
