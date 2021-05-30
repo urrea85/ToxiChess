@@ -43,7 +43,7 @@ class ChessController extends Controller
             $this->state->started = true;
             $this->state->remainingTime = self::turnTime;
             $this->state->turnStartTime = microtime(true);
-            $this->state->gameStartTime = now();
+            $this->state->gameStartTime = now("+0200");
             $this->state->turnCount = 0;
             $this->chess = new Chess();
         }
@@ -83,7 +83,6 @@ class ChessController extends Controller
             $game->moves = $this->getMoves();
             $game->result = $this->getResult();
             $game->start = $this->state->gameStartTime;
-            $game->end = now();
             $game->save();
             $result = $game->result;
             
