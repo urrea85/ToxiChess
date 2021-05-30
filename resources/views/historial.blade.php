@@ -19,7 +19,12 @@
         <table class="table table-hover" id="data-table">
           <thead>
             <tr>
-              <th>ID</th>
+            @auth
+              @if (Auth::user()->role == 'admin')
+                <th>ID</th>
+              @endif
+            @endauth
+              
               <th>Result</th>
               <th>Start</th>
               <th>End</th>
@@ -38,8 +43,18 @@
                   @method('DELETE')
                 <tr>
                       {{--<td><input id="id" type="text" value="{{$game->id}}"></td>--}}
-                      <td>{{$game->id}}</td>
-                      <td>{{$game->result}}</td>
+                      @auth
+                        @if (Auth::user()->role == 'admin')
+                        <td>{{$game->id}}</td>
+                        @endif
+                      @endauth
+                      @if ($game->result == "white")
+                        <td><i class="bi bi-trophy" ></td>
+                      @elseif ($game->result == "black")
+                          <td> <i class="bi bi-trophy-fill" ></td>
+                      @else
+                         <td> <i class="bi bi-dash" ></td>
+                      @endif
                       <td>{{$game->start}}</td>
                       <td>{{$game->end}}</td>
                       @auth

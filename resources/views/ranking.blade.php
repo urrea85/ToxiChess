@@ -38,11 +38,15 @@
                 <thead>
                     <tr>
 
-                    
+                    <th>Nº</th>
                         @if($raw)
-                            <td>Id</td>
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                                <th>Id</th>
+                            @endif
+                            @endauth
                         @endif
-                        <th style="padding:0px 25px">Nickname</th><th style="padding:0px 25px">Score</th>
+                        <th>Nickname</th><th>Score</th>
                         
                         @if($raw)
                         <th>Fecha</th>
@@ -50,7 +54,7 @@
                         @auth
                             @if (Auth::user()->role == 'admin')
                                 @if($raw)
-                                <th></th>
+                                <th>Action</th>
                                 @endif
                             @endif
                         @endauth
@@ -59,10 +63,23 @@
                 </thead>
 
                 <tbody>
+                <?php $i=0; ?>
                     @foreach ($users as $user)
-                    
+                        <tr>
+                        <?php $i++;?>
+                        @if( $i == 1)
+                            <td><i class="bi bi-trophy-fill" ></i> </td>
+                        @else
+                            <td> {{$i}} </td>
+                        @endif
                         @if($raw)
-                            <td>{{$user->id}}</td>
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                                <td>{{$user->id}}</td>
+                            @endif
+                            @endauth
+                        @else
+                        
                         @endif
 
                         <td>{{$user->nickname}}</td>

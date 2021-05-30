@@ -49,14 +49,14 @@
 
         <div  style="display:flex; position:fixed; top:0; right:0; left:0;" class="btn-group btn-group-justified">
             <button style="vertical-align: middle;" type="button" class="logo" onclick="window.location='{{url('/home')}}'"><img src="img/logoRecortado.png"></button>
-            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/ranking')}}'">Ranking</button>
-            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/historial')}}'">Historial</button>
-            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/home')}}'">Jugar</button>
+            <button style="font-size:1vw;" type="button" class="horizontal-menu-2" onclick="window.location='{{url('/ranking')}}'">Ranking</button>
+            <button style="font-size:1vw;" type="button" class="horizontal-menu-2" onclick="window.location='{{url('/historial')}}'">Historial</button>
+            <button style="font-size:1vw;" type="button" class="horizontal-menu-2" onclick="window.location='{{url('/home')}}'">Jugar</button>
             @auth
             @if (Auth::user()->role == 'admin')
-                <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/panelAdmin')}}'">Panel Administrador</button>
+                <button style="font-size:1vw;" type="button" class="horizontal-menu-2" onclick="window.location='{{url('/panelAdmin')}}'">Panel Administrador</button>
             @endif
-            <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/perfil')}}'">{{ Auth::user()->nickname }}</button>
+            <button style="font-size:1vw;" type="button" class="horizontal-menu-2" onclick="window.location='{{url('/perfil')}}'">{{ Auth::user()->nickname }}</button>
             @endauth
             @guest   
                 <button type="button" class="horizontal-menu-2" onclick="window.location='{{url('/login')}}'"> <i class="bi bi-person-circle" ></i></button>
