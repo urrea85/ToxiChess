@@ -38,7 +38,7 @@
                 <thead>
                     <tr>
 
-                    
+                    <th style="padding:0px 25px">Nº</th>
                         @if($raw)
                             <td>Id</td>
                         @endif
@@ -59,10 +59,19 @@
                 </thead>
 
                 <tbody>
+                <?php $i=0; ?>
                     @foreach ($users as $user)
                     
+                        <?php $i++;?>
+                        @if( $i == 1)
+                            <td><i class="bi bi-trophy-fill" ></i> </td>
+                        @else
+                            <td> {{$i}} </td>
+                        @endif
                         @if($raw)
                             <td>{{$user->id}}</td>
+                        @else
+                        
                         @endif
 
                         <td>{{$user->nickname}}</td>
