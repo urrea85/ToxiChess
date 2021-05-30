@@ -16,7 +16,10 @@ class CreateVotesTable extends Migration
         Schema::create('votes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string("move");
-            $table->unsignedBigInteger("state_id");
+            $table->unsignedBigInteger("state_id")->nullable(false);
+            $table->unsignedBigInteger("user_id")->nullable(false);
+            $table->integer("turn");
+            $table->boolean("side");
             $table->timestamps();
         });
     }

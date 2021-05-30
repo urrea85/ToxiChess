@@ -25,7 +25,7 @@ class ForeignKeyUserTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('dailypoints', function (Blueprint $table) {
             $table->dropForeign('dailypoints_user_id_foreign');
         });
     }

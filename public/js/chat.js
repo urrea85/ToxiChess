@@ -77,11 +77,13 @@ function isMoveLegal(move){
   return true;
 }
 
+var updating = false
+
 function setTimer(){
     actualTime = time - (Date.now()/1000.0 - startTime);
-    if (actualTime<=0.0){
+    if (actualTime<=0.0 && !updating){
       actualTime = 0.0;
-      axios.post("updateChess");
+      axios.post("updateChess")
     } 
     document.getElementById("timer").innerHTML = actualTime.toFixed(1) + " S";
 }
@@ -130,7 +132,7 @@ function onDrop (source, target) {
   // see if the move is legal
   var nmove = source + '-' + target;
   if (isMoveLegal(nmove)){
-    axios.post("vote",{move:nmove});
+    axios.post("vote",{move:nmove, side:game.turn()==='w'});
   }
   else{
     console.log("wait, that's illegal!");
