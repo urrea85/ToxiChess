@@ -40,7 +40,11 @@
 
                     <th style="padding:0px 25px">Nº</th>
                         @if($raw)
-                            <td>Id</td>
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                                <td>Id</td>
+                            @endif
+                            @endauth
                         @endif
                         <th style="padding:0px 25px">Nickname</th><th style="padding:0px 25px">Score</th>
                         
@@ -69,7 +73,11 @@
                             <td> {{$i}} </td>
                         @endif
                         @if($raw)
-                            <td>{{$user->id}}</td>
+                        @auth
+                            @if (Auth::user()->role == 'admin')
+                                <td>{{$user->id}}</td>
+                            @endif
+                            @endauth
                         @else
                         
                         @endif
